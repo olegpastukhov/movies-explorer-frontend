@@ -1,0 +1,11 @@
+.movies__page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.movies__content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
