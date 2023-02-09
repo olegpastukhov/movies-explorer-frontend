@@ -4,7 +4,7 @@ import Navigation from "../Navigation/Navigation";
 import "./Header.css";
 import logo from "../../images/header-logo.svg";
 
-function Header(){
+function Header() {
   return (
     <header className="header">
       <Link to="/">

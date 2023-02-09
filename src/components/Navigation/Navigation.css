@@ -94,18 +94,21 @@
 @media screen and (max-width: 768px) {
 
     .navigation__movies,
-    .navigation__auth,
     .navigation__button_account {
         display: none;
-    }
-
-    .burger__button {
-        display: block;
     }
 }
 
 @media screen and (max-width: 420px) {
     .navigation__link {
         margin-right: 14px;
+        font-size: 10px;
+
     }
+
+    .navigation__button {
+        font-size: 10px;
+        padding: 5px 12px;
+    }
+
 }

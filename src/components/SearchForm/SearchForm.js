@@ -1,8 +1,13 @@
+import React from "react";
 import './SearchForm.css';
 import search_icon from "../../images/search-icon.svg";
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 
 function SearchForm() {
+    const [searchRequest, setSearchRequest] = React.useState('');
+    function handleSearchRequestChange(e) {
+        setSearchRequest(e.target.value);
+    }
     return (
         <section className="search">
             <>
@@ -16,8 +21,8 @@ function SearchForm() {
                             required
                             name="searchRequest"
                             disabled=""
-                            value=""
-                            readOnly
+                            value={searchRequest || ''}
+                            onChange={handleSearchRequestChange}
                         />
                         <button
                             type="submit"

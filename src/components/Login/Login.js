@@ -4,7 +4,19 @@ import "./Login.css";
 import logo from "../../images/header-logo.svg";
 
 
-function Login(){
+function Login() {
+
+    const [email, setEmail] = React.useState('');
+    const [password, setPassword] = React.useState('');
+
+    function handleEmailChange(e) {
+        setEmail(e.target.value);
+    }
+
+    function handlePasswordChange(e) {
+        setPassword(e.target.value);
+    }
+
     return (
         <div className="login__container">
             <div className="login__header">
@@ -22,8 +34,8 @@ function Login(){
                     id="email"
                     name="email"
                     required
-                    value=""
-                    readOnly
+                    value={email || ''}
+                    onChange={handleEmailChange}
                 />
                 <span className="login__error">Демо ошибки</span>
                 <label className="login__label" htmlFor="password">Пароль</label>
@@ -33,8 +45,8 @@ function Login(){
                     id="password"
                     name="password"
                     required
-                    value=""
-                    readOnly
+                    value={password || ''}
+                    onChange={handlePasswordChange}
                 />
                 <span className="login__error">Демо ошибки</span>
                 <button className="login__button" type="submit" disabled="">Войти</button>

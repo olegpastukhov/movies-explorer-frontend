@@ -1,8 +1,17 @@
-import { Link } from "react-router-dom";
+import React, { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import BurgerMenu from '../BurgerMenu/BurgerMenu';
 import NavMovies from "../NavMovies/NavMovies";
 import "./Navigation.css";
 
 function Navigation() {
+  const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false);
+
+  const toggleBurgerMenu = () => {
+    setIsBurgerMenuOpen(!isBurgerMenuOpen);
+  }
+
+  const location = useLocation().pathname;
 
   return (
     <nav className="navigation">
@@ -12,25 +21,33 @@ function Navigation() {
           Сохранённые фильмы
         </Link>
       </div> */}
-      <NavMovies />
+      {(location === '/movies' | location === '/saved-movies' | location === '/profile') ? <NavMovies /> : ''}
       <div>
       </div>
       <div className="navigation__auth">
-        <Link to="/signup" className="navigation__link">Регистрация</Link>
-        <Link to="/signin">
-          <button className="navigation__button">
-            Войти
-          </button>
-        </Link>
-        <Link to="/profile">
-          <button className="navigation__button_account">
-            Аккаунт
-          </button>
-        </Link>
+        {(location === '/') ?
+          <>
+            <Link to="/signup" className="navigation__link">Регистрация</Link>
+            <Link to="/signin">
+              <button className="navigation__button">
+                Войти
+              </button>
+            </Link>
+          </> : ''}
+
+        {(location === '/movies' | location === '/saved-movies' | location === '/profile') ?
+          <Link to="/profile">
+            <button className="navigation__button_account">
+              Аккаунт
+            </button>
+          </Link> : ''}
       </div>
-      <button className='burger__button' />
+      {(location === '/movies' | location === '/saved-movies' | location === '/profile') ?
+        <button className='burger__button' onClick={toggleBurgerMenu} /> : ''}
+      {isBurgerMenuOpen && <BurgerMenu onClose={toggleBurgerMenu} />}
     </nav>
   )
 };
+
 
 export default Navigation;

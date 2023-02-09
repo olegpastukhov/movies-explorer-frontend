@@ -2,12 +2,12 @@ import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import './BurgerMenu.css';
 
-function BurgerMenu() {
+function BurgerMenu({ onClose }) {
   return (
     <div className='burger'>
       <div className='burger__backdrop'>
         <div className='burger__container'>
-          <button type='button' className='burger__close-btn' />
+          <button type='button' className='burger__close-btn' onClick={onClose} />
           <div className='burger__menu'>
             <NavLink to='/' className='burger-link burger-link_active'>
               Главная
@@ -19,9 +19,9 @@ function BurgerMenu() {
               Сохранённые фильмы
             </NavLink>
           </div>
-            <Link to='/profile'>
-              <button className='burger__button_account'>Аккаунт</button>
-            </Link>
+          <Link to='/profile'>
+            <button className='burger__button_account'>Аккаунт</button>
+          </Link>
         </div>
       </div>
     </div>

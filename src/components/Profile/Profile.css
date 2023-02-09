@@ -61,15 +61,25 @@
     border: none;
     background: none;
     cursor: pointer;
+    transition: 0.3s ease;
   }
+
+  .profile__edit:hover {
+    opacity: 0.8;
+}
   
   .profile__logout {
     border: none;
     background: none;
-    cursor: pointer;
     font-weight: 500;
     color: #EE3465;
+    transition: 0.3s ease;
   }
+
+  .profile__logout:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
   
   @media screen and (max-width: 768px) {
     .profile__container {

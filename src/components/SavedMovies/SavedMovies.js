@@ -1,9 +1,10 @@
 import React from "react";
 import Header from "../Header/Header";
 import SearchForm from "../SearchForm/SearchForm";
+import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Footer from "../Footer/Footer";
 import "./SavedMovies.css";
-import Preloader from "../Preloader/Preloader";
+
 
 function SavedMovies() {
     return (
@@ -11,7 +12,8 @@ function SavedMovies() {
       <Header />
       <div className="savedMovies__content">
         <SearchForm />
-        <Preloader />
+        <MoviesCardList />
+        
       </div>
       <Footer />
     </section>

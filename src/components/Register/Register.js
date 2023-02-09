@@ -4,6 +4,23 @@ import "./Register.css";
 import logo from "../../images/header-logo.svg";
 
 function Register() {
+
+  const [name, setName] = React.useState('');
+  const [email, setEmail] = React.useState('');
+  const [password, setPassword] = React.useState('');
+
+
+  function handleNameChange(e) {
+    setName(e.target.value);
+  }
+
+  function handleEmailChange(e) {
+    setEmail(e.target.value);
+  }
+
+  function handlePasswordChange(e) {
+    setPassword(e.target.value);
+  }
   return (
     <section className="register__container">
       <div className="register__header">
@@ -27,8 +44,8 @@ function Register() {
           name="name"
           minLength={2}
           required
-          value=""
-          readOnly
+          value={name || ''}
+          onChange={handleNameChange}
         />
         <span className="register__error">Демо ошибки</span>
         <label className="register__label" htmlFor="email">E-mail</label>
@@ -38,8 +55,8 @@ function Register() {
           id="email"
           name="email"
           required
-          value=""
-          readOnly
+          value={email || ''}
+          onChange={handleEmailChange}
         />
         <span className="register__error">Демо ошибки</span>
         <label className="register__label" htmlFor="password">Пароль</label>
@@ -50,8 +67,8 @@ function Register() {
           name="password"
           minLength="8"
           required
-          value=""
-          readOnly
+          value={password || ''}
+          onChange={handlePasswordChange}
         />
         <span className="register__error">Демо ошибки</span>
         <button className="register__button" type="submit" disabled="">Зарегистрироваться</button>
