@@ -88,9 +88,10 @@
     opacity: 0.8;
   }
   
-/*   .login__button:disabled {
+  .login__button:disabled {
     background-color:#A0A0A0;
-  } */
+    cursor: auto;
+  }
   
   .login__bottom {
     color: #A0A0A0;

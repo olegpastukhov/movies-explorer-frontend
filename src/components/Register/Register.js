@@ -2,25 +2,17 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Register.css";
 import logo from "../../images/header-logo.svg";
+import useForm from '../../hooks/useForm';
 
-function Register() {
+function Register({ onRegister }) {
 
-  const [name, setName] = React.useState('');
-  const [email, setEmail] = React.useState('');
-  const [password, setPassword] = React.useState('');
+  const { enteredValues, errors, handleChange, isFormValid } = useForm();
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    onRegister(enteredValues);
+  };
 
-  function handleNameChange(e) {
-    setName(e.target.value);
-  }
-
-  function handleEmailChange(e) {
-    setEmail(e.target.value);
-  }
-
-  function handlePasswordChange(e) {
-    setPassword(e.target.value);
-  }
   return (
     <section className="register__container">
       <div className="register__header">
@@ -35,7 +27,7 @@ function Register() {
         <h1 className="register__title">Добро пожаловать!</h1>
       </div>
 
-      <form className="register__form form">
+      <form className="register__form form" onSubmit={handleSubmit}>
         <label className="register__label" htmlFor="name">Имя</label>
         <input
           className="register__input"
@@ -44,10 +36,11 @@ function Register() {
           name="name"
           minLength={2}
           required
-          value={name || ''}
-          onChange={handleNameChange}
+          value={enteredValues.name || ''}
+          onChange={handleChange}
+          autoComplete="current-name"
         />
-        <span className="register__error">Демо ошибки</span>
+        <span className="register__error">{errors.name}</span>
         <label className="register__label" htmlFor="email">E-mail</label>
         <input
           className="register__input"
@@ -55,23 +48,26 @@ function Register() {
           id="email"
           name="email"
           required
-          value={email || ''}
-          onChange={handleEmailChange}
+          value={enteredValues.email || ''}
+          onChange={handleChange}
+          pattern={'^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$'}
+          autoComplete="current-email"
         />
-        <span className="register__error">Демо ошибки</span>
+        <span className="register__error">{errors.email}</span>
         <label className="register__label" htmlFor="password">Пароль</label>
         <input
           className="register__input"
           type="password"
           id="password"
           name="password"
-          minLength="8"
+          minLength={6}
           required
-          value={password || ''}
-          onChange={handlePasswordChange}
+          value={enteredValues.password || ''}
+          onChange={handleChange}
+          autoComplete="current-password"
         />
-        <span className="register__error">Демо ошибки</span>
-        <button className="register__button" type="submit" disabled="">Зарегистрироваться</button>
+        <span className="register__error">{errors.password}</span>
+        <button className="register__button" type="submit" disabled={!isFormValid}>Зарегистрироваться</button>
       </form>
       <div className="register__bottom">
         <span>Уже зарегистрированы?</span>

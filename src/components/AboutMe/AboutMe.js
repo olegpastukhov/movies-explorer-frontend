@@ -1,3 +1,4 @@
+import React from "react";
 import "./AboutMe.css";
 import photo from "../../images/myphoto.jpg";
 
@@ -13,7 +14,7 @@ function AboutMe() {
             Родился в Москве, живу в пригороде. Работаю учителем информатики в московской школе. Мне давно было интересно обучиться специальности "Фронтенд-разработчик",
             так как это открывает для меня новые возможности, в том числе работать удалённо. Я женат, у меня четверо детей. Увлекаюсь музыкой, туризмом, фото и видео съёмкой.
           </span>
-          <a className="about-me__link" href="https://github.com/olegpastukhov" target="_blank" rel="noreferrer">Github</a>
+          <a className="about-me__link" href="https://github.com/olegpastukhov" target="_blank" rel="noopener noreferrer">Github</a>
         </div>
         <img
           className="about-me__photo"

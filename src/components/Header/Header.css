@@ -5,10 +5,13 @@
 }
 
 .header__logo {
+  transition: 0.3s ease;
+}
+
+.header__logo-container {
+  margin-right: 44px;
   width: 38px;
   height: 38px;
-  margin-right: 44px;
-  transition: 0.3s ease;
 }
 
 .header__logo:hover {

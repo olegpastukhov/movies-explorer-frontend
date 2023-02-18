@@ -2,20 +2,20 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Login.css";
 import logo from "../../images/header-logo.svg";
+import useForm from '../../hooks/useForm';
 
 
-function Login() {
+function Login({ onLogin }) {
 
-    const [email, setEmail] = React.useState('');
-    const [password, setPassword] = React.useState('');
+    const { enteredValues, errors, handleChange, isFormValid } = useForm();
 
-    function handleEmailChange(e) {
-        setEmail(e.target.value);
-    }
-
-    function handlePasswordChange(e) {
-        setPassword(e.target.value);
-    }
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        if (!enteredValues.email || !enteredValues.password) {
+            return;
+        }
+        onLogin(enteredValues);
+    };
 
     return (
         <div className="login__container">
@@ -26,7 +26,7 @@ function Login() {
                 <h1 className="login__title">Рады видеть!</h1>
             </div>
 
-            <form className="login__form form" >
+            <form className="login__form form" onSubmit={handleSubmit}>
                 <label className="login__label" htmlFor="email">E-mail</label>
                 <input
                     className="login__input"
@@ -34,10 +34,12 @@ function Login() {
                     id="email"
                     name="email"
                     required
-                    value={email || ''}
-                    onChange={handleEmailChange}
+                    value={enteredValues.email || ''}
+                    onChange={handleChange}
+                    pattern={'^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$'}
+                    autoComplete="current-email"
                 />
-                <span className="login__error">Демо ошибки</span>
+                <span className="login__error">{errors.email}</span>
                 <label className="login__label" htmlFor="password">Пароль</label>
                 <input
                     className="login__input"
@@ -45,11 +47,12 @@ function Login() {
                     id="password"
                     name="password"
                     required
-                    value={password || ''}
-                    onChange={handlePasswordChange}
+                    value={enteredValues.password || ''}
+                    onChange={handleChange}
+                    autoComplete="current-password"
                 />
-                <span className="login__error">Демо ошибки</span>
-                <button className="login__button" type="submit" disabled="">Войти</button>
+                <span className="login__error">{errors.password}</span>
+                <button className="login__button" type="submit" disabled={!isFormValid}>Войти</button>
             </form>
             <div className="login__bottom">
                 <span>Ещё не зарегистрированы?</span>
