@@ -1,30 +1,30 @@
-import React from 'react';
-import { NavLink, Link } from 'react-router-dom';
-import './BurgerMenu.css';
+import React from "react";
+import "./BurgerMenu.css";
+import { NavLink, Link } from "react-router-dom";
 
 function BurgerMenu({ onClose }) {
   return (
-    <div className='burger'>
-      <div className='burger__backdrop'>
-        <div className='burger__container'>
-          <button type='button' className='burger__close-btn' onClick={onClose} />
-          <div className='burger__menu'>
-            <NavLink to='/' className='burger-link burger-link_active'>
+    <section className="burger-menu">
+      <div className="burger-menu__overlay">
+        <div className="burger-menu__content">
+          <button type="button" className="burger-menu__close-button" onClick={onClose} />
+          <ul className="burger-menu__items">
+            <NavLink to="/" className="burger-menu-link burger-menu-link_active">
               Главная
             </NavLink>
-            <NavLink to='/movies' className='burger-link'>
+            <NavLink to="/movies" className="burger-menu-link">
               Фильмы
             </NavLink>
-            <NavLink to='/saved-movies' className='burger-link'>
+            <NavLink to="/saved-movies" className="burger-menu-link">
               Сохранённые фильмы
             </NavLink>
-          </div>
-          <Link to='/profile'>
-            <button className='burger__button_account'>Аккаунт</button>
+          </ul>
+          <Link to="/profile">
+            <button className="burger-menu__account-button">Аккаунт<div className='burger-menu__account-icon'></div></button>
           </Link>
         </div>
       </div>
-    </div>
+    </section>
   )
 };
 

@@ -1,72 +1,70 @@
-.cards {
-    display: block;
-    margin: 0 70px 50px;
-    padding-top: 30px;
-    background-color: #FFFFFF;
+.movies-cards {
+    background-color: #FAFAFA;
     border-top: 1px solid #E8E8E8;
+    display: block;
+    margin: 0 70px 85px;
+    padding: 0;
+    padding-top: 30px;
 }
 
-.cards__list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(364px, 1fr));
-    column-gap: 20px;
-    max-width: 1140px;
-    row-gap: 30px;
-    justify-content: center;
+.movies-cards__list {
     padding: 0;
     margin: 50px auto 0;
-    padding: 0;
+    display: grid;
+    gap: 23px 20px;
+    row-gap: 30px;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fill, minmax(364px, 1fr));
+    max-width: 1140px;
+    list-style: none;
 }
 
-.cards__button {
+.movies-cards__button {
     width: 320px;
     display: block;
-    border: 1px solid rgba(232, 232, 232, 1);
+    margin: 80px auto 0;
+    padding: 11px 0 9px;
+    border: none;
     border-radius: 6px;
     font-weight: 500;
     font-size: 12px;
     line-height: 15px;
-    background: #FFFFFF;
-    padding: 11px 0 9px;
-    cursor: pointer;
-    transition: .3s ease;
-    margin: 80px auto 30px;
+    background: #F4F4F4;
     text-align: center;
+    transition: 0.4s ease;
 }
 
-.cards__button:hover {
-    opacity: 0.8;
+.movies-cards__button:hover {
+    opacity: 0.6;
+    cursor: pointer;
 }
 
-/* @media screen and (max-width: 997px) {
-    .cards {
-        margin: 0 30px 50px;
-    }
-} */
+/* 920px */
 
 @media screen and (max-width: 920px) {
-    .cards {
-        margin: 0 30px 70px;
+    .movies-cards {
+        margin: 0 30px 110px;
     }
 
-    .cards__list {
-        grid-template-columns: repeat(auto-fit, minmax(339px, 1fr));
+    .movies-cards__list {
         row-gap: 35px;
+        grid-template-columns: repeat(auto-fill, minmax(339px, 1fr));
     }
 }
 
+/* 420px */
+
 @media screen and (max-width: 420px) {
-    .cards {
-        margin: 0 10px 50px;
+    .movies-cards {
+        margin: 0 10px 90px;
         padding-top: 0px;
     }
 
-    .cards__list {
+    .movies-cards__list {
         row-gap: 15px;
     }
 
-    .cards__button {
+    .movies-cards__button {
         width: 240px;
     }
-
 }

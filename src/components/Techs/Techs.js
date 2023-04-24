@@ -1,23 +1,24 @@
+import React from 'react';
 import "./Techs.css";
 
 function Techs() {
   return (
-    <div className="techs" id="tech">
-      <h2 className="techs__title" >Технологии</h2>
-      <h3 className="techs__large-title">7 технологий</h3>
-      <span className="techs__description">
+    <section className="technologies">
+      <h2 className="technologies__section-title" >Технологии</h2>
+      <h3 className="technologies__heading">7 технологий</h3>
+      <p className="technologies__text">
         На курсе веб-разработки мы освоили технологии, которые применили в дипломном проекте.
-      </span>
-      <ul className="techs__list">
-        <li>HTML</li>
-        <li>CSS</li>
-        <li>JS</li>
-        <li>React</li>
-        <li>Git</li>
-        <li>Express.js</li>
-        <li>mongoDB</li>
+      </p>
+      <ul className="technologies__list">
+        <li className="technologies__list-item">HTML</li>
+        <li className="technologies__list-item">CSS</li>
+        <li className="technologies__list-item">JS</li>
+        <li className="technologies__list-item">React</li>
+        <li className="technologies__list-item">Git</li>
+        <li className="technologies__list-item">Express.js</li>
+        <li className="technologies__list-item">mongoDB</li>
       </ul>
-    </div>
+    </section>
   )
 };
 

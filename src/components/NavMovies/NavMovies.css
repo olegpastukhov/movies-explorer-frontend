@@ -1,9 +1,6 @@
 .nav-movies {
-    width: calc(100% - 140px);
-    align-self: center;
-    font-size: 13px;
-    line-height: 18px;
     display: flex;
+    align-self: center;
     flex-direction: row;
 }
 
@@ -12,17 +9,26 @@
     text-decoration: none;
     margin-right: 16px;
     color: #000000;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 18px;
+    transition: 0.4s ease;
+}
+
+.nav-movies__link:hover {
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+.nav-movies__link_active {
+    font-weight: 500;
 }
 
 .nav-movies__link:last-of-type {
     margin-right: 0;
 }
 
-.nav-movies__link_active {
-    font-weight: 500;
-    text-decoration: none;
-    margin-right: 16px;
-}
+/* 768px */
 
 @media screen and (max-width: 768px) {
 

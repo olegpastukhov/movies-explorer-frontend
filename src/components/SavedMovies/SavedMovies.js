@@ -5,15 +5,13 @@ import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Footer from "../Footer/Footer";
 import "./SavedMovies.css";
 
-
 function SavedMovies() {
     return (
-    <section className="savedMovies__page">
+    <section className="saved-movies">
       <Header />
-      <div className="savedMovies__content">
+      <div className="saved-movies__container">
         <SearchForm />
         <MoviesCardList />
-        
       </div>
       <Footer />
     </section>

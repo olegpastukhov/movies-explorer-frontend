@@ -1,33 +1,33 @@
-.burger {
-  z-index: 12;
-  transition: 1s ease;
+.burger-menu {
   display: none;
+  z-index: 12;
+  transition: 0.4s ease;
 }
 
-.burger__backdrop {
-  background-color: rgba(0, 0, 0, 0.3);
-  width: 100%;
-  height: 100%;
+.burger-menu__overlay {
   position: fixed;
   top: 0;
   left: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  width: 100%;
+  height: 100%;
 }
 
-.burger__container {
+.burger-menu__content {
+  width: 70%;
+  height: 100%;
   position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
-  width: 68%;
-  height: 100%;
-  background-color: #fff;
+  background: #FAFAFA;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
 }
 
-.burger__button {
+.burger-menu__open-button {
   display: none;
   background: none;
   border: none;
@@ -39,33 +39,34 @@
   background-size: contain;
   width: 44px;
   height: 44px;
-  transition: 0.3s ease;
+  transition: 0.4s ease;
 }
 
-.burger__button:hover {
+.burger-menu__open-button:hover {
   opacity: 0.6;
   cursor: pointer;
 }
 
-.burger__close-btn {
-  border: none;
-  background: none;
-  background-image: url('../../images/close-icon.svg');
-  width: 32px;
-  height: 32px;
+.burger-menu__close-button {
   position: absolute;
   top: 26px;
   right: 30px;
   padding: 0;
-  transition: 0.3s ease;
+  border: none;
+  background: none;
+  background-image: url('../../images/close-button.svg');
+  width: 32px;
+  height: 32px;
+  transition: 0.4s ease;
 }
 
-.burger__close-btn:hover {
+.burger-menu__close-button:hover {
   opacity: 0.6;
   cursor: pointer;
 }
 
-.burger__menu {
+.burger-menu__items {
+  list-style: none;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -73,17 +74,17 @@
   margin-top: 159px;
 }
 
-.burger-link {
+.burger-menu-link {
   text-decoration: none;
   font-weight: 500;
   font-size: 18px;
   line-height: 22px;
   padding-bottom: 6px;
   color: #000000;
-  transition: 0.3s ease;
+  transition: 0.4s ease;
 }
 
-.burger-link_active {
+.burger-menu-link_active {
   text-decoration: none;
   font-weight: 500;
   font-size: 18px;
@@ -91,53 +92,89 @@
   color: #000000;
   padding-bottom: 4px;
   border-bottom: 2px solid #000;
-  transition: 0.3s ease;
+  transition: 0.4s ease;
 }
 
-.burger__button_account {
-  padding: 8px 20px;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 16px;
-  color: #000000;
+.burger-menu__link:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+.burger-menu__link_active:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+.burger-menu__account-button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100px;
+  height: 32px;
+  padding: 11px 2px 11px 9.5px;
   border: none;
   border-radius: 20px;
   background-color: #F9F9F9;
+  transition: 0.5px;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 12px;
+  color: #000000;
+  text-decoration: none;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.burger-menu__account-icon {
+  width: 26px;
+  height: 26px;
+  background: #F4F4F4;
+  border-radius: 50px;
+  background-image: url('../../images/account-icon.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.burger-menu__account-button:hover {
+  opacity: 0.6;
   cursor: pointer;
-  transition: 0.3s ease;
-  margin-bottom: 90px;
 }
 
-@media screen and (max-width: 769px) {
-  .burger {
+/* 770px */
+
+@media screen and (max-width: 770px) {
+  .burger-menu {
     display: block;
   }
 
-  .burger__button {
+  .burger-menu__open-button {
     display: block;
   }
 }
+
+/* 360px */
 
 @media screen and (max-width: 360px) {
-  .burger__container {
+  .burger-menu__content {
     width: 100%;
   }
 
-  .burger__menu {
+  .burger-menu__items {
     margin-top: 174px;
+    padding-left: 0;
   }
 
-  .burger__button_account {
+  .burger-menu__account-button {
     margin-bottom: 46px;
   }
 
-  .burger__button {
+  .burger-menu__open-button {
     width: 40px;
     height: 43px;
     margin-right: 5px;
   }
 
-  .burger__close-btn {
+  .burger-menu__close-button {
     right: 20px;
   }
 }

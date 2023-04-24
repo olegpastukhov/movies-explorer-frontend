@@ -1,112 +1,107 @@
 .navigation {
-    width: 100%;
+    padding: 0;
+    margin: 0;
     display: flex;
     justify-content: space-between;
-    position: relative;
 }
 
-.navigation a {
-    transition: 0.3s ease;
-}
-
-.navigation a:hover {
-    opacity: 0.7;
-}
-
-/* .navigation__movies {
-    width: calc(100% - 200px);
-    align-self: center;
-    font-size: 13px;
-    line-height: 18px;
-}
-
-.navigation__movies a {
-    color: #000000;
-}
-
-.navigation__movies-link {
-    font-weight: 500;
-    text-decoration: none;
-    margin-right: 16px;
-}
-
-.navigation__movies-link:last-of-type {
-    margin-right: 0;
-}
-
-.navigation__movies-link_active {
-    font-weight: 500;
-    text-decoration: none;
-    margin-right: 16px;
-} */
-
-.navigation__auth {
+.navigation__user-auth {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    width: 100%;
 }
 
-.navigation__link {
-    font-weight: 400;
+.navigation__register-link {
+    color: #000000;
     font-size: 12px;
+    font-weight: 500;
     line-height: 16px;
     text-decoration: none;
-    color: #000000;
     margin-right: 30px;
+    transition: 0.4s ease;
 }
 
-.navigation__button {
-    padding: 8px 20px;
-    background-color: #2BE080;
+.navigation__register-link:hover {
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+.navigation__login-button {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 8px;
+    padding-bottom: 8px;
     font-weight: 500;
     font-size: 12px;
     line-height: 16px;
     border: none;
     border-radius: 3px;
+    color: #FFFFFF;
+    background-color: #3456F3;
+    transition: 0.4s ease;
+}
+
+.navigation__login-button:hover {
+    opacity: 0.6;
     cursor: pointer;
-    transition: 0.3s ease;
 }
 
-.navigation__button:hover {
-    opacity: 0.8;
-}
-
-.navigation__button_account {
-    /* display: none; */
-    padding: 8px 20px;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 16px;
-    color: #000000;
+.navigation__account-button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100px;
+    height: 32px;
+    padding: 11px 2px 11px 9.5px;
     border: none;
     border-radius: 20px;
     background-color: #F9F9F9;
-    cursor: pointer;
-    transition: 0.3s ease;
-    margin-left: 10px;
+    transition: 0.5px;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 12px;
+    color: #000000;
+    text-decoration: none;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
-.navigation__button_account:hover {
-    opacity: 0.8;
+.navigation__account-button:hover {
+    opacity: 0.6;
+    cursor: pointer;
 }
+
+.navigation__account-icon {
+    width: 26px;
+    height: 26px;
+    background: #F4F4F4;
+    border-radius: 50px;
+    background-image: url('../../images/account-icon.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.navigation a {
+    text-decoration: none;
+}
+
+/* 768px */
 
 @media screen and (max-width: 768px) {
-
-    .navigation__movies,
-    .navigation__button_account {
+    .navigation__account-button {
         display: none;
     }
 }
 
+/* 420px */
+
 @media screen and (max-width: 420px) {
-    .navigation__link {
+    .navigation__register-link {
         margin-right: 14px;
         font-size: 10px;
-
     }
 
-    .navigation__button {
+    .navigation__login-button {
         font-size: 10px;
         padding: 5px 12px;
     }

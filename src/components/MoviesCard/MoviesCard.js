@@ -1,3 +1,4 @@
+import React from 'react';
 import "./MoviesCard.css";
 import movie_photo from "../../images/movie_example.jpg";
 import { useLocation } from 'react-router-dom';
@@ -5,16 +6,16 @@ import { useLocation } from 'react-router-dom';
 function MoviesCard({ isSaved }) {
     const location = useLocation().pathname;
     return (
-        <div className="card">
-            <div className="card__description">
-                <span className="card__name">Русское название</span>
-                <span className="card__duration">Продолжительность</span>
+        <div className="movie-card">
+            <div className="movie-card__text">
+                <p className="movie-card__title">Русское название</p>
+                <p className="movie-card__duration">Продолжительность</p>
             </div>
-            {isSaved ? <button type="button" className="card__button card__button_saved" /> :
-                <button type="button" className="card__button" />}
-            {(location === '/saved-movies') && <button type="button" className="card__button card__button_delete" />}
+            {(isSaved && location !== '/saved-movies') ? <button type="button" className="movie-card__button movie-card__button_saved" /> :
+                <button type="button" className="movie-card__button" />}
+            {(location === '/saved-movies') && <button type="button" className="movie-card__delete-button" />}
             <a href="https://www.youtube.com/watch?v=5ovzC93EneA"
-                className="card__link" target="_blank" rel="noreferrer"><img src={movie_photo} alt="Обложка фильма" className="card__image" /></a>
+                className="movie-card____link" target="_blank" rel="noopener noreferrer"><img src={movie_photo} alt="Обложка фильма" className="movie-card__cover" /></a>
         </div>
     )
 };
