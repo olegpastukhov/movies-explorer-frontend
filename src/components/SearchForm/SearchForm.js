@@ -10,7 +10,7 @@ function SearchForm() {
     return (
         <section className="search-form">
             <div className='search-form__container'>
-                <form className="search-form__form form" name="search-form" noValidate>
+                <form className="search-form__form form" name="search-form">
                     <input name="search" placeholder="Фильм" type="text" className="search-form__input-field" required
                         value={searchRequest || ''}
                         onChange={handleSearchRequestChange}

@@ -35,6 +35,12 @@
   color: #A0A0A0;
 }
 
+/* Состояние фокуса */
+
+.search-form__input-field:focus {
+  border-bottom: 1px dotted #DDDEE3;
+}
+
 .search-form__button {
   margin-left: 21px;
   padding: 0;
