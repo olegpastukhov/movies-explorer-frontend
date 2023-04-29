@@ -1,0 +1,70 @@
+.promo {
+    margin: 0;
+    padding: 0;
+    background-color: #DDDEE3;
+    border-top: 1px solid #FFFFFF;
+    background-image: url('../../images/landing-logo.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 524px;
+}
+
+.promo__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 184px;
+}
+
+.promo__heading {
+    max-width: 730px;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 58px;
+    letter-spacing: -0.04em;
+    color: #000000;
+}
+
+/* 768px */
+
+@media screen and (max-width: 768px) {
+
+    .promo {
+        height: 784px;
+        border-top: none;
+    }
+
+    .promo__heading {
+        padding-top: 140px;
+        margin-bottom: 160px;
+        font-weight: 400;
+        font-size: 50px;
+        line-height: 58px;
+        text-align: center;
+        letter-spacing: -0.04em;
+    }
+}
+
+/* 440px */
+
+@media screen and (max-width: 440px) {
+    .promo {
+        height: 570px;
+        background-image: url('../../images/landing-logo-small.svg');
+    }
+
+    .promo__container {
+        padding: 205px 0 0;
+    }
+
+    .promo__heading {
+        margin-bottom: 161px;
+        margin-top: 0px;
+        padding-top: 0px;
+        font-size: 31px;
+        line-height: 39px;
+    }
+}

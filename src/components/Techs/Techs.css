@@ -1,0 +1,144 @@
+.technologies {
+  padding-top: 85px;
+  padding-bottom: 85px;
+  padding-left: 70px;
+  padding-right: 70px;
+  background-color: #F5F5F5;
+}
+
+.technologies__section-title {
+  display: block;
+  margin-bottom: 90px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #000;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 27px;
+  letter-spacing: -0.04em;
+  color: #000000;
+}
+
+.technologies__text {
+  margin: 0 auto;
+  margin-bottom: 100px;
+  padding: 0;
+  max-width: 460px;
+  display: block;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  letter-spacing: -0.04em;
+  color: #000000;
+}
+
+.technologies__heading {
+  margin: 0;
+  padding: 0;
+  padding-bottom: 26px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 58px;
+  text-align: center;
+  letter-spacing: -0.04em;
+  color: #000000;
+}
+
+.technologies__list {
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  column-gap: 10px;
+  justify-content: center;
+}
+
+.technologies__list-item {
+  display: block;
+  margin: 0;
+  width: 90px;
+  padding: 22px 0;
+  background: #E8E8E8;
+  border-radius: 10px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  letter-spacing: -0.04em;
+  color: #000000;
+}
+
+/* 768px */
+
+@media screen and (max-width: 768px) {
+  .technologies {
+    padding: 70px 50px;
+  }
+
+  .technologies__section-title {
+    margin-bottom: 80px;
+  }
+
+  .technologies__text {
+    margin-bottom: 78px;
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .technologies__list-item {
+    width: 84px;
+  }
+}
+
+/* 820px */
+
+@media screen and (max-width: 820px) {
+  .technologies__list {
+    display: grid;
+    grid-template-columns: 90px 90px 90px;
+    gap: 10px;
+  }
+}
+
+/* 480px */
+
+@media screen and (max-width: 480px) {
+  .technologies__list {
+    grid-template-columns: 90px 90px;
+  }
+
+  .technologies__list-item {
+    font-size: 12px;
+    line-height: 15px;
+  }
+}
+
+/* 440px */
+
+@media screen and (max-width: 440px) {
+  .technologies {
+    padding: 70px 18px;
+    padding-top: 60px;
+    background-color: #FFFFFF;
+  }
+
+  .technologies__section-title {
+    margin-bottom: 60px;
+    padding-bottom: 25px;
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  .technologies__heading {
+    font-size: 30px;
+    line-height: 36px;
+  }
+
+  .technologies__text {
+    margin-bottom: 50px;
+    font-size: 11px;
+    line-height: 16px;
+  }
+}

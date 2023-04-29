@@ -1,0 +1,167 @@
+.about-student {
+  padding-top: 105px; 
+  padding-left: 70px;
+  padding-right: 70px;
+  padding-bottom: 75px;
+}
+
+.about-student__header {
+  padding-bottom: 24px;
+  border-bottom: 1px solid #000;
+  margin-bottom: 66px;
+  display: block;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 27px;
+  letter-spacing: -0.04em;
+  color: #000000;
+}
+
+.about-student__description {
+  width: 50%;
+}
+
+.about-student__container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.about-student__name {
+  padding: 0;
+  margin: 0;
+  margin-bottom: 18px;
+  display: block;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 58px;
+  letter-spacing: -0.04em;
+  color: #000000;
+}
+
+.about-student__text {
+  margin: 0 0 99px 0;
+  padding: 0;
+  display: block;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  color: #000000;
+  mix-blend-mode: normal;
+}
+
+.about-student__specialization {
+  margin: 0 0 26px 0;
+  padding: 0;
+  display: block;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 20px;
+  color: #000000;
+}
+
+.about-student__link {
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: #000000;
+  transition: 0.4s ease;
+}
+
+.about-student__link:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+.about-student__photo {
+  object-fit: cover;
+  border-radius: 10px;
+  width: 270px;
+  height: 327px;
+}
+
+/* 768px */
+
+@media screen and (max-width: 768px) {
+  .about-student {
+    padding: 90px 50px;
+  }
+
+  .about-student__name {
+    font-size: 40px;
+    line-height: 42px;
+    margin-bottom: 16px;
+  }
+
+  .about-student__specialization {
+    font-size: 12px;
+    line-height: 18px;
+    margin-bottom: 20px;
+  }
+
+  .about-student__text {
+    font-size: 12px;
+    line-height: 18px;
+    margin-bottom: 67px;
+  }
+
+  .about-student__photo {
+    width: 254px;
+    height: 307px;
+  }
+}
+
+/* 590px */
+
+@media screen and (max-width: 590px) {
+  .about-student {
+    padding: 70px 14px;
+  }
+
+  .about-student__header {
+    margin-top: 0;
+    padding-top: 0;
+    line-height: 22px;
+    font-size: 18px;
+    padding-bottom: 28px;
+    margin-bottom: 60px;
+  }
+
+  .about-student__container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .about-student__photo {
+    width: 292px;
+    height: 352px;
+    margin: 0 auto 40px;
+    order: 1;
+  }
+
+  .about-student__description {
+    order: 2;
+    width: 100%;
+  }
+
+  .about-student__specialization {
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .about-student__name {
+    margin-bottom: 20px;
+    font-size: 30px;
+    line-height: 36px;
+  }
+
+  .about-student__text {
+    font-size: 11px;
+    line-height: 16px;
+    margin-bottom: 40px;
+  }
+}

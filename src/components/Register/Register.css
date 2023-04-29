@@ -1,0 +1,154 @@
+.register {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 70px;
+  padding-top: 70px;
+  width: 396px;
+  height: 100%;
+}
+
+.register__logo {
+  margin-bottom: 35px;
+  width: 38px;
+  height: 38px;
+}
+
+.register__heading {
+  margin: 0;
+  padding: 0;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+  color: #000000;
+}
+
+.register__header {
+  margin-bottom: 40px;
+  width: 100%;
+}
+
+.register__form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.register__label {
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  color: #A0A0A0;
+}
+
+.register__input {
+  padding-top: 5px;
+  width: 100%;
+  padding-bottom: 10px;
+  margin-bottom: 5px;
+  border: none;
+  background-color: #FAFAFA;
+  border-bottom: 1px solid #E8E8E8;
+}
+
+.register__error {
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  color: #EE3465;
+  margin-bottom: 6px;
+  height: 12px;
+}
+
+.register__input:focus {
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #2BE080;
+}
+
+.register__button {
+  padding: 13px 0 15px;
+  margin-top: 130px;
+  margin-bottom: 16px;
+  width: 100%;
+  background-color: #3456F3;
+  border: none;
+  border-radius: 3px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: #FFFFFF;
+  text-align: center;
+  transition: 0.4s ease;
+}
+
+.register__button:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+.register__link {
+  margin-left: 6px;
+  color: #3456F3;
+  text-decoration: none;
+}
+
+.register__link:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+.register__bottom-field {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #A0A0A0;
+}
+
+/* 768px */
+
+@media screen and (max-width: 768px) {
+  .register {
+    padding-top: 232px;
+  }
+
+  .register__button {
+    margin-top: 128px;
+    margin-bottom: 16px;
+  }
+}
+
+/* 440px */
+
+@media screen and (max-width: 440px) {
+  .register {
+    min-width: 260px;
+    width: calc(100% - 60px);
+    margin-top: 56px;
+    padding-bottom: 30px;
+    padding-top: 0;
+  }
+
+  .register__logo {
+    margin-bottom: 50px;
+  }
+
+  .register__header {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    margin-bottom: 80px;
+  }
+
+  .register__bottom-field {
+    font-size: 13px;
+    line-height: 15px;
+  }
+
+  .register__button {
+    margin-top: 217px;
+    margin-bottom: 14px;
+  }
+}
