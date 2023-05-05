@@ -1,21 +1,10 @@
-const BASE_SERVER_URL = 'https://api.diploma.pastukhovoa.ru';
-// const BASE_SERVER_URL = 'http://localhost:3001';
-
-const MOVIES_SERVER = 'https://api.nomoreparties.co/';
+import { BASE_SERVER_URL, MOVIES_SERVER } from './constants.js';
+import checkServerResponse from './utils.js';
 
 const headers = {
     'Accept': 'application/json',
     'Content-Type': 'application/json',
 };
-
-// функция проверки ответа сервера
-
-const checkServerResponse = (res) => {
-    if (res.ok) {
-        return res.json();
-    }
-    return Promise.reject(`Что-то пошло не так: ${res.status}`);
-}
 
 // функция регистрации пользователя, принимает name, email, password, передаёт на бэкенд по методу POST
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from "react";
 import { Route, Routes } from 'react-router-dom';
 
 import Main from '../Main.js';
@@ -8,8 +8,22 @@ import Profile from '../Profile/Profile';
 import Register from '../Register/Register';
 import Login from '../Login/Login';
 import NotFoundPage from '../NotFoundPage/NotFoundPage';
+import Popup from '../Popup/Popup.js';
 
 function App() {
+
+  // стейты, связанные с попапом
+
+  const [popupMessage, setPopupMessage] = useState('Произошла ошибка. Всем срочно покинуть здание');
+  const [isPopupOpen, setIsPopupOpen] = useState(true);
+
+  // обработчик закрытия попапа
+
+  const handlePopupClose = () => {
+    setIsPopupOpen(false);
+    setPopupMessage('');
+  };
+
   return (
     <div className="App">
       <Routes>
@@ -21,6 +35,11 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
+      <Popup
+        isOpen={isPopupOpen}
+        onPopupClose={handlePopupClose}
+        msg={popupMessage}
+      />
     </div>
   )
 }

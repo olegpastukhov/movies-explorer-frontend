@@ -1,13 +1,5 @@
-const MOVIES_SERVER_URL = 'https://api.nomoreparties.co/beatfilm-movies';
-
-// функция проверки ответа сервера
-
-const checkServerResponse = (res) => {
-    if (res.ok) {
-        return res.json();
-    }
-    return Promise.reject(`Что-то пошло не так: ${res.status}`);
-}
+import MOVIES_SERVER_URL from './constants.js';
+import checkServerResponse from './utils.js';
 
 // функция получения фильмов с сервера, метод GET
 
