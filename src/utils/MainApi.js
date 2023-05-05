@@ -1,5 +1,5 @@
 import { BASE_SERVER_URL, MOVIES_SERVER } from './constants.js';
-import checkServerResponse from './utils.js';
+import { checkServerResponse } from './utils.js';
 
 const headers = {
     'Accept': 'application/json',
