@@ -29,7 +29,7 @@ function App() {
 
   // обработчик закрытия попапа
 
-  const handlePopupClose = () => {
+  const handleClosePopup = () => {
     setIsPopupOpen(false);
     setPopupMessage('');
   };
@@ -60,7 +60,7 @@ function App() {
         handleUserAuthorization({ email, password });
       })
       .catch(err => {
-        setPopupMessage(err);
+        setPopupMessage(`Произошла ошибка: ${err}`);
         setIsPopupOpen(true);
       });
   };
@@ -87,7 +87,7 @@ function App() {
           })
       })
       .catch(err => {
-        setPopupMessage(err);
+        setPopupMessage(`Произошла ошибка: ${err}`);
         setIsPopupOpen(true);
       });
   };
@@ -104,7 +104,7 @@ function App() {
         setIsPopupOpen(true);
       })
       .catch(err => {
-        setPopupMessage(err);
+        setPopupMessage(`Произошла ошибка: ${err}`);
         setIsPopupOpen(true);
       })
       .finally(() => {
@@ -146,7 +146,7 @@ function App() {
           setSavedMovies(handledSavedMovies);
         })
         .catch(err => {
-          setPopupMessage(err);
+          setPopupMessage(`Произошла ошибка: ${err}`);
           setIsPopupOpen(true);
         })
         .finally(() => {
@@ -155,11 +155,11 @@ function App() {
     } else {
       saveMovie(movie, jwt)
         .then((newMovie) => {
-          setSavedMovies((saved) => [...saved, newMovie]); // иначе добавляем в хранилище
+          setSavedMovies((saved) => [...saved, newMovie]); // иначе добавляем в массив
           setIsLoading(false);
         })
         .catch((err) => {
-          setPopupMessage(err);
+          setPopupMessage(`Произошла ошибка: ${err}`);
           setIsPopupOpen(true);
         })
     }
@@ -177,7 +177,7 @@ function App() {
         setSavedMovies(handledSavedMovies);
       })
       .catch(err => {
-        setPopupMessage(err);
+        setPopupMessage(`Произошла ошибка: ${err}`);
         setIsPopupOpen(true);
       })
       .finally(() => {
@@ -187,7 +187,7 @@ function App() {
 
   // обработчик проверки токена пользователя
 
-  const handleTokenCheck = () => {
+  const handleUserTokenCheck = () => {
     const path = location.pathname;
     const jwt = localStorage.getItem('jwt');
     getUserInfo(jwt)
@@ -204,12 +204,27 @@ function App() {
       .catch((err) => console.log(err));
   };
 
-  // хук useEffect
+ 
+ 
+  // запуск обработчика проверки токена пользователя
 
+  useEffect(() => { handleUserTokenCheck(); }, [isLoggedIn]); 
+
+  // закрытие попапа нажатием клавиши Esc
+  
   useEffect(() => {
-    handleTokenCheck();
-  }, [isLoggedIn]);
-
+    if (setIsPopupOpen) {
+      function handlePressEsc(evt) {
+        if (evt.key === 'Escape') {
+          handleClosePopup();
+        }
+      }
+      document.addEventListener('keydown', handlePressEsc);
+      return () => {
+        document.removeEventListener('keydown', handlePressEsc);
+      }
+    }
+  }, [isPopupOpen]);
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -262,7 +277,7 @@ function App() {
         </Routes>
         <Popup
           isOpen={isPopupOpen}
-          onPopupClose={handlePopupClose}
+          onPopupClose={handleClosePopup}
           msg={popupMessage}
         />
       </div>

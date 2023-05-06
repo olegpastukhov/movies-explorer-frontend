@@ -2,6 +2,8 @@ import React from "react";
 import "./BurgerMenu.css";
 import { NavLink, Link } from "react-router-dom";
 
+// компонент принимает пропс onClose
+
 function BurgerMenu({ onClose }) {
   return (
     <section className="burger-menu">
@@ -9,13 +11,13 @@ function BurgerMenu({ onClose }) {
         <div className="burger-menu__content">
           <button type="button" className="burger-menu__close-button" onClick={onClose} />
           <ul className="burger-menu__items">
-            <NavLink to="/" className="burger-menu-link burger-menu-link_active">
+            <NavLink to="/" className={({ isActive }) => isActive ? 'burger-menu-link_active' : 'burger-menu-link'}>
               Главная
             </NavLink>
-            <NavLink to="/movies" className="burger-menu-link">
+            <NavLink to="/movies" className={({ isActive }) => isActive ? 'burger-menu-link_active' : 'burger-menu-link'}>
               Фильмы
             </NavLink>
-            <NavLink to="/saved-movies" className="burger-menu-link">
+            <NavLink to="/saved-movies" className={({ isActive }) => isActive ? 'burger-menu-link_active' : 'burger-menu-link'}>
               Сохранённые фильмы
             </NavLink>
           </ul>

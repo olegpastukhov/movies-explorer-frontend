@@ -5,7 +5,9 @@ import Navigation from "../Navigation/Navigation";
 import NavMovies from "../NavMovies/NavMovies";
 import "./Header.css";
 
-function Header() {
+// компонет принмает пропс loggedIn из Main
+
+function Header({ loggedIn }) {
   const location = useLocation().pathname;
 
   return (
@@ -13,8 +15,8 @@ function Header() {
       <div className="header__logo-container">
         <Link to="/"><img src={logo} alt="Логотип сайта" className="header__logo" /></Link>
       </div>
-      {(location === '/movies' | location === '/saved-movies' | location === '/profile') ? <NavMovies /> : ''}
-      <Navigation />
+      {(location === '/movies' | location === '/saved-movies' | location === '/profile') && loggedIn ? <NavMovies /> : ''}
+      <Navigation loggedIn={loggedIn} />
     </header>
   )
 };

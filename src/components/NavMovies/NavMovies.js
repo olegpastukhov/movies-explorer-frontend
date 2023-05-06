@@ -2,6 +2,8 @@ import React from 'react';
 import { Link, useLocation } from "react-router-dom";
 import "./NavMovies.css";
 
+// компонент не принимает пропсы, классы ссылок зависят от location
+
 function NavMovies() {
     const location = useLocation().pathname;
     return (

@@ -16,6 +16,7 @@
     border-radius: 20px;
     padding: 50px;
     min-width: 30%;
+    min-height: 100px;
     width: 40%;
     position: fixed;
     top: 200px;
