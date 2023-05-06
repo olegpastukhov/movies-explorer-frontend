@@ -1,7 +1,7 @@
 import React from 'react';
 import './FilterCheckbox.css';
 
-// компонет принимает пропсы isShortMovieFilter и onShortMovieFilter
+// компонет принимает пропсы isShortMovieFilter и onShortMovieFilter, необходимые для его работы
 
 const FilterCheckbox = ({ isShortMovieFilter, onShortMovieFilter }) => {
   return (
