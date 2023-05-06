@@ -5,10 +5,12 @@ import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Footer from "../Footer/Footer";
 import "./SavedMovies.css";
 
-function SavedMovies() {
+// компонент принимает пропс loggedIn и передаёт его в header
+
+function SavedMovies({loggedIn}) {
     return (
     <section className="saved-movies">
-      <Header />
+      <Header loggedIn={loggedIn}/>
       <div className="saved-movies__container">
         <SearchForm />
         <MoviesCardList />

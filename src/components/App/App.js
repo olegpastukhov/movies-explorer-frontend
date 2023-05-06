@@ -71,11 +71,11 @@ function App() {
     return authorize(data)
       .then((data) => {
         setIsLoggedIn(true);
-        localStorage.setItem('jwt', data.token);
-        navigate('/movies');
+        localStorage.setItem('jwt', data.token); // токен хранится в localstorage
+        navigate('/movies'); // автоматическая переадресация на страницу movies
         Promise.all([getUserInfo(data.token), getSavedMovies(data.token)])
           .then(([userInfo, userMovies]) => {
-            setCurrentUser(userInfo);
+            setCurrentUser(userInfo); // данные записываются в глобальную стейт-переменную
             localStorage.setItem('savedMovies', JSON.stringify(userMovies));
             setSavedMovies(userMovies);
           })
@@ -118,10 +118,10 @@ function App() {
     logout()
       .then(() => {
         setIsLoggedIn(false)
-        localStorage.clear();
+        localStorage.clear(); // удаление данных из localstorage
         setCurrentUser({});
-        setPopupMessage();
-        navigate('/')
+        setPopupMessage('');
+        navigate('/'); // переадресация на главную страницу
       })
       .catch((err) => {
         console.log(err.message)
@@ -188,8 +188,8 @@ function App() {
   // обработчик проверки токена пользователя
 
   const handleUserTokenCheck = () => {
-    const path = location.pathname;
     const jwt = localStorage.getItem('jwt');
+    const path = location.pathname;
     getUserInfo(jwt)
       .then((data) => {
         setIsLoggedIn(true);
@@ -198,20 +198,18 @@ function App() {
       })
       .catch((err) => console.log(err));
     getSavedMovies(jwt)
-      .then((movies) => {
-        setSavedMovies(movies) // установка стейта
+      .then((data) => {
+        setSavedMovies(data); // установка стейта
       })
       .catch((err) => console.log(err));
   };
 
- 
- 
   // запуск обработчика проверки токена пользователя
 
-  useEffect(() => { handleUserTokenCheck(); }, [isLoggedIn]); 
+  useEffect(() => { handleUserTokenCheck(); }, [isLoggedIn]);
 
   // закрытие попапа нажатием клавиши Esc
-  
+
   useEffect(() => {
     if (setIsPopupOpen) {
       function handlePressEsc(evt) {
@@ -231,16 +229,8 @@ function App() {
       <div className="App">
         <Routes>
           <Route exact path="/" element={<Main loggedIn={isLoggedIn} />} />
-          <Route exact path="/signup" element={!isLoggedIn ? (
-            <Register onRegister={handleUserRegistration} />
-          ) : (
-            <Navigate to="/" />
-          )} />
-          <Route path="/signin" element={!isLoggedIn ? (
-            <Login onLogin={handleUserAuthorization} />
-          ) : (
-            <Navigate to="/" />
-          )} />
+          <Route exact path="/signup" element={<Register onRegister={handleUserRegistration} />} />
+          <Route path="/signin" element={<Login onLogin={handleUserAuthorization} />} />
           <Route path="/movies" element={isLoggedIn ? (
             <Movies
               loggedIn={isLoggedIn}
@@ -268,7 +258,7 @@ function App() {
           <Route path="/profile" element={isLoggedIn ? (
             <Profile
               loggedIn={isLoggedIn}
-              onUpdateUser={handleUpdateUserInfo}
+              onUpdateUserInfo={handleUpdateUserInfo}
               onSignOut={handleUserSignOut}
             />) : (
             <Navigate to="/" />

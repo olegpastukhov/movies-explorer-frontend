@@ -15,7 +15,7 @@ function Header({ loggedIn }) {
       <div className="header__logo-container">
         <Link to="/"><img src={logo} alt="Логотип сайта" className="header__logo" /></Link>
       </div>
-      {(location === '/movies' | location === '/saved-movies' | location === '/profile') && loggedIn ? <NavMovies /> : ''}
+      {loggedIn ? <NavMovies /> : ''}
       <Navigation loggedIn={loggedIn} />
     </header>
   )

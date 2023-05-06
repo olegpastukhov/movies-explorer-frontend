@@ -34,7 +34,7 @@ export const authorize = async ({ email, password }) => {
 // функция выхода из аккаунта, метод POST
 
 export const logout = async () => {
-    return fetch(`${BASE_SERVER_URL}}/signout`, {
+    return fetch(`${BASE_SERVER_URL}/signout`, {
         method: 'POST',
         credentials: 'include',
         headers,
