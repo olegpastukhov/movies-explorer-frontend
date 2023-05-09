@@ -1,6 +1,8 @@
 import React from 'react';
 import "./AboutProject.css";
 
+// компонент не принимает пропсы, не содержит логики
+
 function AboutProject() {
     return (
         <section className="about-project" id="about-project">

@@ -5,9 +5,10 @@ import Navigation from "../Navigation/Navigation";
 import NavMovies from "../NavMovies/NavMovies";
 import "./Header.css";
 
-// компонет принмает пропс loggedIn из Main
+// компонет принмает пропс loggedIn из Main, значение влияет на внешний вид шапки сайта
 
 function Header({ loggedIn }) {
+  
   const location = useLocation().pathname;
 
   return (

@@ -1,4 +1,4 @@
-import MOVIES_SERVER_URL from './constants.js';
+import { MOVIES_SERVER_URL } from './constants.js';
 import { checkServerResponse } from './utils.js';
 
 // функция получения фильмов с сервера, метод GET

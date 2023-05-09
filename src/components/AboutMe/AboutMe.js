@@ -2,6 +2,8 @@ import React from 'react';
 import "./AboutMe.css";
 import photo from "../../images/photo.jpg";
 
+// компонент не принимает пропсы, не содержит логики
+
 function AboutMe() {
   return (
     <section className="about-student" id="about-student">

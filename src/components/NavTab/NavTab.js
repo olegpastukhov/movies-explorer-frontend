@@ -2,6 +2,8 @@ import React from "react";
 import { HashLink as Link } from 'react-router-hash-link';
 import "./NavTab.css";
 
+// компонент не принимает пропсы, не содержит логики
+
 function NavTab() {
     return (
         <ul className="navtab">

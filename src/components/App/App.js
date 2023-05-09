@@ -76,7 +76,7 @@ function App() {
         Promise.all([getUserInfo(data.token), getSavedMovies(data.token)])
           .then(([userInfo, userMovies]) => {
             setCurrentUser(userInfo); // данные записываются в глобальную стейт-переменную
-            localStorage.setItem('savedMovies', JSON.stringify(userMovies));
+            localStorage.setItem('savedMoviesFromServer', JSON.stringify(userMovies));
             setSavedMovies(userMovies);
           })
           .catch(err => {
@@ -142,7 +142,7 @@ function App() {
       deleteMovie(id, jwt)
         .then(() => {
           const handledSavedMovies = savedMovies.filter(item => id !== item._id);
-          localStorage.setItem('savedMovies', handledSavedMovies);
+          localStorage.setItem('savedMoviesFromServer', handledSavedMovies);
           setSavedMovies(handledSavedMovies);
         })
         .catch(err => {
@@ -173,7 +173,7 @@ function App() {
     deleteMovie(movie._id, jwt)
       .then(() => {
         const handledSavedMovies = savedMovies.filter(item => movie._id !== item._id);
-        localStorage.setItem('savedMovies', handledSavedMovies);
+        localStorage.setItem('savedMoviesFromServer', handledSavedMovies);
         setSavedMovies(handledSavedMovies);
       })
       .catch(err => {
@@ -204,7 +204,7 @@ function App() {
       .catch((err) => console.log(err));
   };
 
-  // запуск обработчика проверки токена пользователя
+  // эффект проверки токена пользователя
 
   useEffect(() => { handleUserTokenCheck(); }, [isLoggedIn]);
 
@@ -224,6 +224,8 @@ function App() {
     }
   }, [isPopupOpen]);
 
+
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="App">
@@ -234,13 +236,14 @@ function App() {
           <Route path="/movies" element={isLoggedIn ? (
             <Movies
               loggedIn={isLoggedIn}
-              savedMovies={savedMovies}
-              onLoading={setIsLoading}
-              isLoading={isLoading}
               onSave={handleSaveMovie}
               onDelete={handleDeleteMovie}
               setPopupMessage={setPopupMessage}
-              setIsPopupOpen={setIsPopupOpen} />
+              setIsPopupOpen={setIsPopupOpen}
+              savedMovies={savedMovies}
+              onLoading={setIsLoading}
+              isLoading={isLoading}
+            />
           ) : (
             <Navigate to="/" />
           )} />

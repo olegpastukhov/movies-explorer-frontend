@@ -8,7 +8,7 @@ import AboutMe from './AboutMe/AboutMe';
 import Portfolio from './Portfolio/Portfolio';
 import Footer from './Footer/Footer';
 
-// компонет принимает пропс loggedIn из App
+// компонет принимает пропс loggedIn из App, передаёт его в header
 
 function Main({ loggedIn }) {
   return (

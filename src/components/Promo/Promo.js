@@ -1,6 +1,8 @@
 import React from "react";
 import "./Promo.css";
 
+// компонент не принимает пропсы, не содержит логики
+
 function Promo() {
   return (
     <section className="promo">

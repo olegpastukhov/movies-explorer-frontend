@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import './NotFoundPage.css';
 
+// компонент не принимает пропсы, не содержит логики
+
 function NotFoundPage() {
   return (
     <section className="notfound">

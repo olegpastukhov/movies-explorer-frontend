@@ -5,7 +5,9 @@ import "./NavMovies.css";
 // компонент не принимает пропсы, классы ссылок зависят от location
 
 function NavMovies() {
+
     const location = useLocation().pathname;
+    
     return (
         <div className="nav-movies">
             <Link

@@ -1,6 +1,8 @@
 import React from 'react';
 import "./Techs.css";
 
+// компонент не принимает пропсы и не содержит логики
+
 function Techs() {
   return (
     <section className="technologies" id="technologies">

@@ -35,6 +35,7 @@
 
 .movie-card__title {
   padding: 0;
+  padding-right: 50px;
   margin: 0;
   overflow: hidden;
   white-space: nowrap;

@@ -12,7 +12,7 @@ import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 
 // компонент принимает несколько пропсов 
 
-function SearchForm({ shortMovies, isSavedMoviesPage, onFilter, onSearchMovies, disabled }) {
+function SearchForm({ shortMoviesFilter, isSavedMoviesPage, onFilter, onSearchMovies }) {
 
     // const [searchRequest, setSearchRequest] = React.useState('');
     // function handleSearchRequestChange(e) {
@@ -31,22 +31,22 @@ function SearchForm({ shortMovies, isSavedMoviesPage, onFilter, onSearchMovies, 
 
     function handleFormSubmit(evt) {
         evt.preventDefault(); // отменяем действие по умолчанию
-        onSearchMovies(values.searchValue, shortMovies, isValid); // передаём данные дальше
+        onSearchMovies(values.searchValue, shortMoviesFilter, isValid); // передаём данные дальше
     }
 
     // обработчик сабмита формы поиска по сохранённым фильмам
 
     function handleSavedMoviesFormSubmit(evt) {
         evt.preventDefault() // отменяем действие по умолчанию
-        onSearchMovies(values.searchValue, shortMovies); // передаём данные дальше
+        onSearchMovies(values.searchValue, shortMoviesFilter); // передаём данные дальше
     }
 
     // если мы находимся на странице поиска фильма, в текстовом поле появляется текст запроса из localStorage
 
     useEffect(() => {
-        if (location.pathname === '/movies' && localStorage.getItem('lastSearchMovieName')) {
-            const lastSearchMovie = localStorage.getItem('lastSearchMovieName');
-            values.searchValue = lastSearchMovie;
+        if (location.pathname === '/movies' && localStorage.getItem('lastSearch')) {
+            const lastSearch = localStorage.getItem('lastSearch');
+            values.searchValue = lastSearch;
         }
     }, [location]);
 
@@ -55,13 +55,13 @@ function SearchForm({ shortMovies, isSavedMoviesPage, onFilter, onSearchMovies, 
             <div className='search-form__container'>
                 <form className="search-form__form form" name={isSavedMoviesPage ? ("saved-movie-form") : ("movie-form")}
                     onSubmit={isSavedMoviesPage ? (handleSavedMoviesFormSubmit) : (handleFormSubmit)} noValidate >
-                    <input name="search" placeholder="Фильм" type="text" className="search-form__input-field" required
+                    <input name="searchValue" placeholder="Фильм" type="text" className="search-form__input-field" required
                         value={values.searchValue || ''} onChange={handleValueChange} />
                     <button type="submit" className="search-form__button">Найти</button>
                 </form>
             </div>
             <div className="search-form__filter">
-                <FilterCheckbox onShortMovieFilter={onFilter} isShortMovieFilter={shortMovies} />
+                <FilterCheckbox onShortMovieFilter={onFilter} isShortMovieFilter={shortMoviesFilter} />
             </div>
         </section>
     )
