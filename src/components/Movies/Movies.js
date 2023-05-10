@@ -164,6 +164,7 @@ function Movies({ loggedIn, onSave, onDelete, savedMovies, setPopupMessage, setI
 
   return (
     <>
+      <Preloader isLoading={isLoading} />
       <section className="movies">
         <Header loggedIn={loggedIn} />
         <div className="movies__container">
@@ -180,7 +181,6 @@ function Movies({ loggedIn, onSave, onDelete, savedMovies, setPopupMessage, setI
             savedMovies={savedMovies}
           />
         </div>
-        <Preloader isLoading={isLoading} />
         <Footer />
       </section>
     </>

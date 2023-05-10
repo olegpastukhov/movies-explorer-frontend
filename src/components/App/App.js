@@ -223,8 +223,7 @@ function App() {
       }
     }
   }, [isPopupOpen]);
-
-
+  
 
   return (
     <CurrentUserContext.Provider value={currentUser}>

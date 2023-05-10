@@ -3,7 +3,7 @@ import Header from "../Header/Header";
 import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Footer from "../Footer/Footer";
-// import Preloader from '../Preloader/Preloader';
+import Preloader from '../Preloader/Preloader';
 import "./SavedMovies.css";
 
 // импортируем хук useLocation
@@ -16,7 +16,7 @@ import { SHORT_MOVIE_DURATION } from '../../utils/constants.js';
 
 // компонент принимает пропсы
 
-function SavedMovies({ loggedIn, onDelete, setPopupMessage, setIsPopupOpen, savedMovies }) {
+function SavedMovies({ loggedIn, onDelete, setPopupMessage, setIsPopupOpen, savedMovies, isLoading }) {
 
   // получаем location
 
@@ -74,7 +74,7 @@ function SavedMovies({ loggedIn, onDelete, setPopupMessage, setIsPopupOpen, save
 
     const movies = filterMovies(savedMovies, value, shortMoviesFilter);
     setQuery(value);
-    
+
     if (movies.length === 0) {
       setPopupMessage('Ничего не найдено :)');
       setIsPopupOpen(true);
@@ -105,6 +105,7 @@ function SavedMovies({ loggedIn, onDelete, setPopupMessage, setIsPopupOpen, save
 
   return (
     <section className="saved-movies">
+      <Preloader isLoading={isLoading} />
       <Header loggedIn={loggedIn} />
       <div className="saved-movies__container">
         <SearchForm
