@@ -21,6 +21,8 @@
   width: 50%;
 }
 
+/* блок "Студент", слева текст, справа картинка  */
+
 .about-student__container {
   display: flex;
   flex-direction: row;
@@ -53,7 +55,8 @@
 }
 
 .about-student__specialization {
-  margin: 0 0 26px 0;
+  margin: 0;
+  margin-bottom: 26px;
   padding: 0;
   display: block;
   font-style: normal;

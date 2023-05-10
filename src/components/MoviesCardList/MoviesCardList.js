@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import MoviesCard from "../MoviesCard/MoviesCard";
-// import Preloader from "../Preloader/Preloader";
 import "./MoviesCardList.css";
 
 // импортируем хук useWidth

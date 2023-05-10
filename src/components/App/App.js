@@ -4,13 +4,13 @@ import { Route, Routes, Navigate, useNavigate, useLocation } from 'react-router-
 // импортируем компоненты
 
 import Main from '../Main.js';
-import Movies from '../Movies/Movies';
-import SavedMovies from '../SavedMovies/SavedMovies';
 import Profile from '../Profile/Profile';
 import Register from '../Register/Register';
 import Login from '../Login/Login';
-import NotFoundPage from '../NotFoundPage/NotFoundPage';
+import SavedMovies from '../SavedMovies/SavedMovies';
+import Movies from '../Movies/Movies';
 import Popup from '../Popup/Popup.js';
+import NotFoundPage from '../NotFoundPage/NotFoundPage';
 
 // импортируем контекст пользователя
 
@@ -19,6 +19,14 @@ import CurrentUserContext from "../../contexts/CurrentUserContext";
 // импортируем функции MainApi
 
 import { register, authorize, logout, getUserInfo, updateUserInfo, saveMovie, deleteMovie, getSavedMovies } from "../../utils/MainApi";
+
+// импортируем getMovies из moviesApi
+
+import { getMovies } from '../../utils/MoviesApi';
+
+// импортируем константу
+
+import { SHORT_MOVIE_DURATION } from '../../utils/constants.js';
 
 function App() {
 
@@ -65,7 +73,7 @@ function App() {
       });
   };
 
-  // обработчик авторизации пользователя. Обращение к API, создание локальных хранилищ jwt и savedMovies
+  // обработчик авторизации пользователя. Обращение к API, создание локальных хранилищ jwt и savedMoviesFromServer
 
   const handleUserAuthorization = async (data) => {
     return authorize(data)
@@ -133,12 +141,15 @@ function App() {
   const handleSaveMovie = (movie) => {
     setIsLoading(true);
     const jwt = localStorage.getItem('jwt');
-    const handledMovie = savedMovies.find(item => {
+    const movieSaved = savedMovies.find(item => {
       return item.movieId === movie.id
     });
-    const isLiked = Boolean(handledMovie); // если фильм isLiked, удаляем из хранилища
-    const id = handledMovie ? handledMovie._id : null;
-    if (isLiked) {
+    const isMovieLiked = Boolean(movieSaved);
+    const id = movieSaved ? movieSaved._id : null;
+
+    // если фильм уже сохранён, удаляем из хранилища
+
+    if (isMovieLiked) {
       deleteMovie(id, jwt)
         .then(() => {
           const handledSavedMovies = savedMovies.filter(item => id !== item._id);
@@ -153,9 +164,12 @@ function App() {
           setIsLoading(false);
         });
     } else {
+
+      // иначе добавляем в массив
+
       saveMovie(movie, jwt)
         .then((newMovie) => {
-          setSavedMovies((saved) => [...saved, newMovie]); // иначе добавляем в массив
+          setSavedMovies((saved) => [...saved, newMovie]);
           setIsLoading(false);
         })
         .catch((err) => {
@@ -165,7 +179,7 @@ function App() {
     }
   };
 
-  // обработчик удаления фильма, обращение к API, обновление хранилища savedMovies
+  // обработчик удаления фильма, обращение к API, обновление хранилища savedMoviesFromServer
 
   const handleDeleteMovie = (movie) => {
     setIsLoading(true);
@@ -185,16 +199,172 @@ function App() {
       });
   };
 
+  // функционал Movies
+
+  // фильтр фильмов согласно запросу
+
+  const filterMovies = (movies, query, checkbox) => {
+    const moviesFound = movies.filter((movie) => {
+      const movieNameRu = String(movie.nameRU).toLowerCase().trim(); // записываем русское название в нижнем регистре в переменную
+      const movieNameEn = String(movie.nameEN).toLowerCase().trim(); // записываем английское название в нижнем регистре в переменную
+      const queryMovie = query.toLowerCase().trim(); // записываем текст запроса в нижнем регистре в переменную
+      return movieNameRu.indexOf(queryMovie) !== -1 || movieNameEn.indexOf(queryMovie) !== -1; // при совпадении добавляем в moviesFound
+    });
+
+    if (checkbox) {
+      return moviesFound.filter(movie => movie.duration < SHORT_MOVIE_DURATION);
+    } else {
+      return moviesFound;
+    }
+  }
+
+  // стейт начального массива фильмов
+
+  const [initMoviesList, setInitMoviesList] = useState([]);
+  const [filteredMoviesList, setFilteredMoviesList] = useState([]);
+
+  // обработчик поискового запроса
+
+  const handleSetFoundMovies = (movies, query, checkbox) => {
+
+    // локально отфильтровываем фильмы согласно запросу
+
+    const foundMoviesList = filterMovies(movies, query, false);
+
+    // если ничего не найдено - открывается попап с сообщением
+
+    if (foundMoviesList.length === 0) {
+      setPopupMessage('Ничего не найдено :)');
+      setIsPopupOpen(true);
+    }
+
+    // устанавливаем стейт initMoviesList
+
+    setInitMoviesList(foundMoviesList);
+
+    // устанавливаем стейт filteredMoviesList в зависимости от состояния чекбокса
+
+    setFilteredMoviesList(checkbox ? (foundMoviesList.filter(movie => movie.duration < SHORT_MOVIE_DURATION)) : foundMoviesList);
+
+
+    // создаём локальное хранилище foundMovies
+
+    localStorage.setItem('foundMovies', JSON.stringify(foundMoviesList));
+  };
+
+  // стейт состояния чекбокса и массива фильмов с Api
+
+  const [shortMoviesFilter, setShortMoviesFilter] = useState(false);
+  const [moviesFromServer, setMoviesFromServer] = useState([]);
+
+  // обработчик массива короткометражек
+
+  const handleShortMoviesList = () => {
+    setShortMoviesFilter(!shortMoviesFilter);
+    if (!shortMoviesFilter) {
+      setFilteredMoviesList(initMoviesList.filter(movie => movie.duration < SHORT_MOVIE_DURATION));
+      if (filteredMoviesList.length === 0) {
+      }
+    } else {
+      setFilteredMoviesList(initMoviesList);
+    }
+    localStorage.setItem('shortMoviesFilter', !shortMoviesFilter); // сохраняем состояние чекбокса в хранилище
+  };
+
+  // обработчик поискового запросов
+
+  const handleMovieSearchSubmit = (value) => {
+    if (!value || value.trim().length === 0) {
+      setPopupMessage('Пожалуйста, введите ключевое слово.'); // сообщение в попапе при попытке пустого запроса
+      setIsPopupOpen(true);
+      return;
+    }
+
+    localStorage.setItem('lastSearch', value); // записываем поисковое слово в хранилище
+    localStorage.setItem('shortMoviesFilter', shortMoviesFilter); // записываем состояние чекбокса в хранилище 
+
+    // если фильмы с Api не получены - получаем, сохраняем в хранилище moviesFromServer
+    // и передаём обработчику поискового запроса
+
+    if (moviesFromServer.length === 0) {
+      setIsLoading(true);
+      getMovies()
+        .then(movies => {
+          localStorage.setItem('moviesFromServer', JSON.stringify(movies));
+          setMoviesFromServer(movies);
+          handleSetFoundMovies(
+            movies,
+            value,
+            shortMoviesFilter
+          );
+        })
+        .catch((err) => {
+          setPopupMessage(`Упс! Произошла ошибка: ${err}`);
+          setIsPopupOpen(true);
+        })
+        .finally(() => setIsLoading(false));
+    } else {
+      handleSetFoundMovies(moviesFromServer, value, shortMoviesFilter);
+    }
+  }
+
+  // функционал savedMovies
+
+  // стейт состояния чекбокса
+
+  const [shortSavedMoviesFilter, setShortSavedMoviesFilter] = useState(false);
+
+  // обработчик короткометражек
+
+  const handleSavedShortMoviesList = () => {
+    if (!shortSavedMoviesFilter) {
+      setShortSavedMoviesFilter(true);
+      localStorage.setItem('shortSavedMoviesFilter', true); // сохраняем состояние чекбокса в хранилище
+      setShowedSavedMoviesList(filteredSavedMoviesList.filter(movie => movie.duration < SHORT_MOVIE_DURATION));
+    } else {
+      setShortSavedMoviesFilter(false);
+      localStorage.setItem('shortSavedMoviesFilter', false); // и здесь тоже, но false
+      setShowedSavedMoviesList(filteredSavedMoviesList);
+    }
+  }
+
+  // стейты массивов фильмов и поискового запроса
+
+  const [showedSavedMoviesList, setShowedSavedMoviesList] = useState(savedMovies);
+  const [filteredSavedMoviesList, setFilteredSavedMoviesList] = useState(showedSavedMoviesList);
+  const [querySavedMovie, setQuerySavedMovie] = useState('');
+
+  // обработчик сабмита формы поиска по сохранённым фильмам
+
+  const handleSavedMovieSearchSubmit = (value) => {
+    if (!value || value.trim().length === 0) {
+      setPopupMessage('Пожалуйста, введите ключевое слово.'); // сообщение при пустом запросе
+      setIsPopupOpen(true);
+      return;
+    }
+
+    const movies = filterMovies(savedMovies, value, shortSavedMoviesFilter);
+    setQuerySavedMovie(value);
+
+    if (movies.length === 0) {
+      setPopupMessage('Ничего не найдено :)');
+      setIsPopupOpen(true);
+    } else {
+      setFilteredSavedMoviesList(movies);
+      setShowedSavedMoviesList(movies);
+    }
+  }
+
   // обработчик проверки токена пользователя
 
   const handleUserTokenCheck = () => {
-    const jwt = localStorage.getItem('jwt');
+    const jwt = localStorage.getItem('jwt'); // достаём токен из хранилища
     const path = location.pathname;
     getUserInfo(jwt)
       .then((data) => {
         setIsLoggedIn(true);
-        setCurrentUser(data)
-        navigate(path); // получаем данные пользователя
+        setCurrentUser(data) // получаем данные пользователя
+        navigate(path); 
       })
       .catch((err) => console.log(err));
     getSavedMovies(jwt)
@@ -223,7 +393,6 @@ function App() {
       }
     }
   }, [isPopupOpen]);
-  
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -237,10 +406,14 @@ function App() {
               loggedIn={isLoggedIn}
               onSave={handleSaveMovie}
               onDelete={handleDeleteMovie}
-              setPopupMessage={setPopupMessage}
-              setIsPopupOpen={setIsPopupOpen}
+              onShortMoviesFilter={setShortMoviesFilter}
+              onFilteredMoviesList={setFilteredMoviesList}
+              onInitMoviesList={setInitMoviesList}
+              onSearchMovies={handleMovieSearchSubmit}
+              shortMoviesFilter={shortMoviesFilter}
+              onFilter={handleShortMoviesList}
+              filteredMoviesList={filteredMoviesList}
               savedMovies={savedMovies}
-              onLoading={setIsLoading}
               isLoading={isLoading}
             />
           ) : (
@@ -248,12 +421,18 @@ function App() {
           )} />
           <Route path="/saved-movies" element={isLoggedIn ? (
             <SavedMovies
+              onDelete={handleDeleteMovie}
               savedMovies={savedMovies}
               loggedIn={isLoggedIn}
               isLoading={isLoading}
-              onDelete={handleDeleteMovie}
-              setPopupMessage={setPopupMessage}
-              setIsPopupOpen={setIsPopupOpen}
+              onShortSavedMoviesFilter={setShortSavedMoviesFilter}
+              onShowedSavedMoviesList={setShowedSavedMoviesList}
+              filterMovies={filterMovies}
+              query={querySavedMovie}
+              onSearchMovies={handleSavedMovieSearchSubmit}
+              onFilter={handleSavedShortMoviesList}
+              shortSavedMoviesFilter={shortSavedMoviesFilter}
+              showedSavedMoviesList={showedSavedMoviesList}
             />) : (
             <Navigate to="/" />
           )} />
@@ -269,8 +448,8 @@ function App() {
         </Routes>
         <Popup
           isOpen={isPopupOpen}
+          popupMessage={popupMessage}
           onPopupClose={handleClosePopup}
-          msg={popupMessage}
         />
       </div>
     </CurrentUserContext.Provider>
@@ -278,4 +457,3 @@ function App() {
 }
 
 export default App;
-

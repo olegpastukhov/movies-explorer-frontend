@@ -66,18 +66,23 @@
 
 }
 
-.profile__edit {
+.profile__edit-button {
   border: none;
   background: #FAFAFA;
   transition: 0.4s ease;
 }
 
-.profile__edit:hover {
+.profile__edit-button:hover {
   opacity: 0.6;
   cursor: pointer;
 }
 
-.profile__logout {
+.profile__edit-button:disabled {
+  opacity: 0.4;
+  cursor: auto;
+}
+
+.profile__logout-button {
   font-weight: 500;
   font-size: 13px;
   line-height: 16px;
@@ -87,7 +92,7 @@
   transition: 0.4s ease;
 }
 
-.profile__logout:hover {
+.profile__logout-button:hover {
   opacity: 0.6;
   cursor: pointer;
 }

@@ -33,21 +33,28 @@ function Profile({ loggedIn, onUpdateUserInfo, onSignOut }) {
 
   const { values, handleValueChange, isValid, handleResetFormData } = useForm();
 
+  // в логическую переменную записываем результат проверки, отличаются ли новые данные от уже сохранённых
+  // и валидна ли форма редактирования данных
+
+  const isNewValues = (!isValid || (currentUserInfo.name === values.name && currentUserInfo.email === values.email))
+
   // обработчик сабмита формы
 
   const handleFormSubmit = (evt) => {
     evt.preventDefault(); // отменяем действие по умолчанию
-    onUpdateUserInfo({ name: values.name, email: values.email, });
+    onUpdateUserInfo({ name: values.name, email: values.email, }); // передаём новые данные дальше
   };
+
+  // обработчик выхода из аккаунта
+
+  const handleUserSignOut = () => { onSignOut() };
+
+  // эффект обновления полей формы
 
   useEffect(() => {
     currentUserInfo ? handleResetFormData(currentUserInfo) : handleResetFormData();
   }, [currentUserInfo, handleResetFormData]);
 
-  // в логическую переменную записываем результат проверки, отличаются ли новые данные от уже сохранённых
-  // и валидна ли форма редактирования данных
-
-  const isNewValues = (!isValid || (currentUserInfo.name === values.name && currentUserInfo.email === values.email))
 
   return (
     <>
@@ -65,8 +72,8 @@ function Profile({ loggedIn, onUpdateUserInfo, onSignOut }) {
             <input type="email" name="email" value={values.email || ''} className="profile__input" required onChange={handleValueChange} />
           </div>
           <div className="profile__bottom-field">
-            <button className="profile__edit" type="submit" disabled={isNewValues}>Редактировать</button>
-            <button className="profile__logout" type="button" onClick={() => onSignOut()}>Выйти из аккаунта</button>
+            <button className="profile__edit-button" type="submit" disabled={isNewValues}>Редактировать</button>
+            <button className="profile__logout-button" type="button" onClick={handleUserSignOut}>Выйти из аккаунта</button>
           </div>
         </form>
       </section>

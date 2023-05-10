@@ -1,26 +1,11 @@
 import React from 'react';
 import "./MoviesCard.css";
-// import movie_photo from "../../images/movie_example.jpg";
-// import { useLocation } from 'react-router-dom';
 
 // импортируем адрес сервера
 
 import { MOVIES_SERVER } from '../../utils/constants.js';
 
 function MoviesCard({ onSave, onDelete, movie, isSavedMovie, isSavedMoviesPage }) {
-    // const location = useLocation().pathname;
-
-    // обработчик сохранения фильма
-
-    const handleSaveMovie = () => {
-        onSave(movie);
-    };
-
-    // обработчик удаления фильма
-
-    const handleDeleteMovie = () => {
-        onDelete(movie);
-    };
 
     // для удобства сохраняем в переменную класс карточки
 
@@ -35,9 +20,9 @@ function MoviesCard({ onSave, onDelete, movie, isSavedMovie, isSavedMoviesPage }
                 <p className="movie-card__duration">{movie.duration + ' мин'}</p>
             </div>
             {isSavedMoviesPage ? (
-                <button className='movie-card__delete-button' type='button' onClick={handleDeleteMovie} />
+                <button className='movie-card__delete-button' type='button' onClick={() => onDelete(movie)} />
             ) : (
-                <button className={cardButtonClassName} type='button' onClick={handleSaveMovie} />
+                <button className={cardButtonClassName} type='button' onClick={() => onSave(movie)} />
             )}
             <a href={movie.trailerLink}
                 className="movie-card____link" target="_blank" rel="noopener noreferrer">
