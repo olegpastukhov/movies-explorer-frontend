@@ -1,9 +1,13 @@
+/* раздел профиля пользователя */
+
 .profile {
   margin: 70px auto 0;
   width: 410px;
   display: flex;
   flex-direction: column;
 }
+
+/* заголовок профиля пользователя */
 
 .profile__heading {
   margin: 0;
@@ -17,10 +21,14 @@
   color: #000000;
 }
 
+/* линия между текстовыми полями */
+
 .profile__line {
   width: 100%;
   border-bottom: 1px solid #E8E8E8;
 }
+
+/* форма на странице аккаунта */
 
 .profile___form {
   font-size: 11px;
@@ -29,6 +37,8 @@
   width: 100%;
 }
 
+/* поле формы */
+
 .profile__field {
   padding: 16px 0;
   display: flex;
@@ -36,12 +46,16 @@
   justify-content: space-between;
 }
 
+/* подпись поля ввода формы */
+
 .profile__label {
   display: block;
   color: #000000;
   font-size: 11px;
   line-height: 13px;
 }
+
+/* поле для ввода информации */
 
 .profile__input {
   text-align: right;
@@ -54,6 +68,8 @@
   outline: none;
 }
 
+/* нижняя часть раздела аккаунта */
+
 .profile__bottom-field {
   display: flex;
   flex-direction: column;
@@ -63,8 +79,9 @@
   line-height: 16px;
   text-align: center;
   color: #000000;
-
 }
+
+/* кнопка редактирования профиля */
 
 .profile__edit-button {
   border: none;
@@ -81,6 +98,8 @@
   opacity: 0.4;
   cursor: auto;
 }
+
+/* кнопка выхода из аккаунта */
 
 .profile__logout-button {
   font-weight: 500;

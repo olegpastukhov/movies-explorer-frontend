@@ -1,10 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import MoviesCard from "../MoviesCard/MoviesCard";
-import "./MoviesCardList.css";
-
-// импортируем хук useWidth
-
-import { useWidth } from '../../hooks/useWidth';
+import React, { useEffect, useState, useCallback } from 'react';
+import MoviesCard from '../MoviesCard/MoviesCard';
+import './MoviesCardList.css';
 
 // импортируем необходимые константы
 
@@ -20,9 +16,30 @@ import {
 
 function MoviesCardList({ onSave, onDelete, movies, isSavedMoviesPage, savedMovies }) {
 
+  // функция установки ширины экрана
+
+  const setWidth = () => {
+    const getWidth = useCallback(() => window.innerWidth, []); // получаем ширину экрана
+    const [width, setWidth] = useState(getWidth()); // устанавливаем стейт width
+    useEffect(() => {
+      let timer;
+      function resizeController() {
+        if (!timer) { timer = setTimeout(() => { timer = null; handleResize(); }, 1000); }// задержка в 1000 мс
+      };
+      // обработчик изменения размера экрана
+      function handleResize() {
+        setWidth(getWidth());
+        window.addEventListener('resize', resizeController, false); // добавляем слушатель события resize
+      };
+      return () => window.removeEventListener('resize', handleResize); // удаляем слушатель события resize
+    }, [getWidth]);
+
+    return width;
+  }
+
   // получаем значение ширины экрана
 
-  const width = useWidth();
+  const screenWidth = setWidth();
 
   // получаем количество фильмов, если массив не пустой
 
@@ -40,7 +57,7 @@ function MoviesCardList({ onSave, onDelete, movies, isSavedMoviesPage, savedMovi
 
   // обработчик нажатий на кнопку "Ещё", квеличивает clicksCount на единицу
 
-  const handleMoreClick = () => {
+  const handleMoreCardsClick = () => {
     setClicksCount(clicksCount + 1);
   }
 
@@ -51,16 +68,16 @@ function MoviesCardList({ onSave, onDelete, movies, isSavedMoviesPage, savedMovi
   // эффект, устанавливаем кол-во карточек в зависимости от ширины карточек
 
   useEffect(() => {
-    if (width > BIG_SCREEN_WIDTH && !isSavedMoviesPage) {
+    if (screenWidth > BIG_SCREEN_WIDTH && !isSavedMoviesPage) {
       setShowMoviesOnPageList(movies.slice(0, BIG_SCREEN_CARDS_COUNT + MORE_CARDS_BIG_SCREEN_COUNT * clicksCount))
-    } else if (width > SMALL_SCREEN_WIDTH && width <= BIG_SCREEN_WIDTH && !isSavedMoviesPage) {
+    } else if (screenWidth > SMALL_SCREEN_WIDTH && screenWidth <= BIG_SCREEN_WIDTH && !isSavedMoviesPage) {
       setShowMoviesOnPageList(movies.slice(0, MIDDLE_SCREEN_CARDS_COUNT + MORE_CARDS_SMALL_SCREEN_COUNT * clicksCount));
-    } else if (width <= SMALL_SCREEN_WIDTH && !isSavedMoviesPage) {
+    } else if (screenWidth <= SMALL_SCREEN_WIDTH && !isSavedMoviesPage) {
       setShowMoviesOnPageList(movies.slice(0, SMALL_SCREEN_CARDS_COUNT + MORE_CARDS_SMALL_SCREEN_COUNT * clicksCount));
     } else {
       setShowMoviesOnPageList(movies);
     }
-  }, [width, movies, savedMovies, clicksCount]);
+  }, [screenWidth, movies, savedMovies, clicksCount]);
 
   // показываем на странице нужное количество карточек, добавляем функциональность кнопке "Ещё"
 
@@ -79,7 +96,7 @@ function MoviesCardList({ onSave, onDelete, movies, isSavedMoviesPage, savedMovi
         })}
       </ul>
       {!isSavedMoviesPage && showMoviesOnPageList && moviesCount !== showMoviesOnPageList.length && (
-        <button className="movies-cards__button" onClick={handleMoreClick}>Ещё</button>
+        <button className="movies-cards__button" onClick={handleMoreCardsClick}>Ещё</button>
       )}
     </section>
   )

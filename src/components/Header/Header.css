@@ -1,3 +1,5 @@
+/* секция хедер ("шапка сайта") */
+
 .header {
   padding-top: 19px; 
   padding-left: 70px;
@@ -11,9 +13,13 @@
   background-color: #FAFAFA;
 }
 
+/* серый вариант шапки сайта */
+
 .header_grey {
   background-color: #DDDEE3;
 }
+
+/* контейнер логотипа */
 
 .header__logo-container {
   margin: 0;
@@ -21,6 +27,8 @@
   max-height: 38px;
   width: 100px;
 }
+
+/* логотип (картинка) */
 
 .header__logo {
   margin: 0;

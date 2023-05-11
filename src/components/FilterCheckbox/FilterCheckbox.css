@@ -1,7 +1,11 @@
+/* чекбокс фильтра короткометражек */
+
 .filter-checkbox {
     display: flex;
     align-items: center;
 }
+
+/* контент чекбокса */
 
 .filter-checkbox__content {
     -webkit-appearance: none;
@@ -35,6 +39,8 @@
     transform: translate(15px);
     background-color: #2BE080;
 }
+
+/* подпись справа от чекбокса */
 
 .filter-checkbox__label {
     font-weight: 400;

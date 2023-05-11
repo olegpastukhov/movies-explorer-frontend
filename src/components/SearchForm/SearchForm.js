@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect } from 'react';
 import './SearchForm.css';
 import { useLocation } from 'react-router-dom';
 
@@ -14,14 +14,9 @@ import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 
 function SearchForm({ shortMoviesFilter, isSavedMoviesPage, onFilter, onSearchMovies }) {
 
-    // const [searchRequest, setSearchRequest] = React.useState('');
-    // function handleSearchRequestChange(e) {
-    //     setSearchRequest(e.target.value);
-    // }
-
     // получаем всё необходимое через useForm
 
-    const { values, handleValueChange, isValid } = useForm();
+    const { values, handleValueChange } = useForm();
 
     // получаем location
 
@@ -31,13 +26,6 @@ function SearchForm({ shortMoviesFilter, isSavedMoviesPage, onFilter, onSearchMo
 
     function handleFormSubmit(evt) {
         evt.preventDefault(); // отменяем действие по умолчанию
-        onSearchMovies(values.searchValue, shortMoviesFilter, isValid); // передаём данные дальше
-    }
-
-    // обработчик сабмита формы поиска по сохранённым фильмам
-
-    function handleSavedMoviesFormSubmit(evt) {
-        evt.preventDefault() // отменяем действие по умолчанию
         onSearchMovies(values.searchValue, shortMoviesFilter); // передаём данные дальше
     }
 
@@ -53,8 +41,7 @@ function SearchForm({ shortMoviesFilter, isSavedMoviesPage, onFilter, onSearchMo
     return (
         <section className="search-form">
             <div className='search-form__container'>
-                <form className="search-form__form form" name={isSavedMoviesPage ? ("saved-movie-form") : ("movie-form")}
-                    onSubmit={isSavedMoviesPage ? (handleSavedMoviesFormSubmit) : (handleFormSubmit)} noValidate >
+                <form className="search-form__form form" name={isSavedMoviesPage ? ("saved-movie-form") : ("movie-form")} onSubmit={handleFormSubmit} noValidate >
                     <input name="searchValue" placeholder="Фильм" type="text" className="search-form__input-field" required
                         value={values.searchValue || ''} onChange={handleValueChange} />
                     <button type="submit" className="search-form__button">Найти</button>

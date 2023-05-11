@@ -1,9 +1,13 @@
+/* секция "Сохранённые фильмы" */
+
 .saved-movies {
   min-height: 100%;
   height: 100vh;
   margin: 0;
   padding: 0;
 }
+
+/* контейнер секции */
 
 .saved-movies__container {
   display: flex;

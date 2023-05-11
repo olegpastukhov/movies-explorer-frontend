@@ -1,5 +1,5 @@
 import React from 'react';
-import "./Techs.css";
+import './Techs.css';
 
 // компонент не принимает пропсы и не содержит логики
 

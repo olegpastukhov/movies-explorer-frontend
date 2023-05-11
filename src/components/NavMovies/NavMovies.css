@@ -1,8 +1,12 @@
+/* блок навигации по фильмам */
+
 .nav-movies {
     display: flex;
     align-self: center;
     flex-direction: row;
 }
+
+/* ссылка блока навигации по фильмам */
 
 .nav-movies__link {
     font-weight: 500;

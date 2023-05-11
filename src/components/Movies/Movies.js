@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import "./Movies.css";
+import './Movies.css';
 
 // импортируем константу
 
@@ -8,11 +8,11 @@ import { SHORT_MOVIE_DURATION } from '../../utils/constants.js';
 
 // импортируем компоненты
 
-import Header from "../Header/Header";
-import MoviesCardList from "../MoviesCardList/MoviesCardList";
-import SearchForm from "../SearchForm/SearchForm";
-import Footer from "../Footer/Footer";
-import Preloader from "../Preloader/Preloader";
+import Header from '../Header/Header';
+import MoviesCardList from '../MoviesCardList/MoviesCardList';
+import SearchForm from '../SearchForm/SearchForm';
+import Footer from '../Footer/Footer';
+import Preloader from '../Preloader/Preloader';
 
 // компонент принимает пропсы из компонента App
 

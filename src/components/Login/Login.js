@@ -1,26 +1,15 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import logo from "../../images/logo.svg";
-import "./Login.css";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import logo from '../../images/logo.svg';
+import './Login.css';
 
 // импортируем хук useForm
 
-import useForm from "../../hooks/useForm";
+import useForm from '../../hooks/useForm';
 
 // компонент принимает пропс onLogin из App
 
 function Login({ onLogin }) {
-
-    // const [email, setEmail] = React.useState('');
-    // const [password, setPassword] = React.useState('');
-
-    // function handleEmailChange(e) {
-    //     setEmail(e.target.value);
-    // }
-
-    // function handlePasswordChange(e) {
-    //     setPassword(e.target.value);
-    // }
 
     // берём необходимое из useForm
 
@@ -48,7 +37,7 @@ function Login({ onLogin }) {
                     className="login__input"
                     type="email"
                     name="email"
-                    value={values.email || ''}
+                    value={values.email || ""}
                     onChange={handleValueChange}
                     required
                 />
@@ -58,7 +47,7 @@ function Login({ onLogin }) {
                     className="login__input"
                     type="password"
                     name="password"
-                    value={values.password || ''}
+                    value={values.password || ""}
                     onChange={handleValueChange}
                     required
                 />

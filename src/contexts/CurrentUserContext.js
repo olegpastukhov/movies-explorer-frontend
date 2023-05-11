@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 // для хранения данных о пользователе используется глобальная стейт-переменная, созданная с помощью createContext
 

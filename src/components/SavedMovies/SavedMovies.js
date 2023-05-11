@@ -1,25 +1,25 @@
-import React, { useEffect } from "react";
-import Header from "../Header/Header";
-import SearchForm from "../SearchForm/SearchForm";
-import MoviesCardList from "../MoviesCardList/MoviesCardList";
-import Footer from "../Footer/Footer";
+import React, { useEffect } from 'react';
+import Header from '../Header/Header';
+import SearchForm from '../SearchForm/SearchForm';
+import MoviesCardList from '../MoviesCardList/MoviesCardList';
+import Footer from '../Footer/Footer';
 import Preloader from '../Preloader/Preloader';
-import "./SavedMovies.css";
+import './SavedMovies.css';
 
 // импортируем хук useLocation
 
 import { useLocation } from 'react-router-dom';
 
-// импортируем константы
+// импортируем константу
 
 import { SHORT_MOVIE_DURATION } from '../../utils/constants.js';
 
-// компонент принимает пропсы
+// компонент принимает многочисленные пропсы
 
-function SavedMovies({ 
-  loggedIn, 
-  onDelete, 
-  savedMovies, 
+function SavedMovies({
+  loggedIn,
+  onDelete,
+  savedMovies,
   isLoading,
   onShortSavedMoviesFilter,
   onShowedSavedMoviesList,
@@ -34,6 +34,8 @@ function SavedMovies({
   // получаем location
 
   const location = useLocation();
+
+  // получаем из хранилища состояние фильтра короткометражек, получаем массив показываемых фильмов
 
   useEffect(() => {
     if (localStorage.getItem('shortSavedMoviesFilter') === 'true') {

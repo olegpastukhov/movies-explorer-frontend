@@ -1,3 +1,5 @@
+// в данном компоненте содержится почти вся логика //
+
 import React, { useEffect, useState } from "react";
 import { Route, Routes, Navigate, useNavigate, useLocation } from 'react-router-dom';
 

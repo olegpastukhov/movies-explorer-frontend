@@ -1,9 +1,13 @@
+/* секция "Студент" */
+
 .about-student {
   padding-top: 105px; 
   padding-left: 70px;
   padding-right: 70px;
   padding-bottom: 75px;
 }
+
+/* заголовок секции */
 
 .about-student__header {
   padding-bottom: 24px;
@@ -17,17 +21,21 @@
   color: #000000;
 }
 
+/* описание */
+
 .about-student__description {
   width: 50%;
 }
 
-/* блок "Студент", слева текст, справа картинка  */
+/* блок с описанием и картинкой  */
 
 .about-student__container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
+
+/* имя студента */
 
 .about-student__name {
   padding: 0;
@@ -42,6 +50,8 @@
   color: #000000;
 }
 
+/* текст о студенте */
+
 .about-student__text {
   margin: 0 0 99px 0;
   padding: 0;
@@ -54,6 +64,8 @@
   mix-blend-mode: normal;
 }
 
+/* специальность */
+
 .about-student__specialization {
   margin: 0;
   margin-bottom: 26px;
@@ -65,6 +77,8 @@
   line-height: 20px;
   color: #000000;
 }
+
+/* ссылка на гитхаб */
 
 .about-student__link {
   text-decoration: none;
@@ -79,6 +93,8 @@
   opacity: 0.6;
   cursor: pointer;
 }
+
+/* фотография студента */
 
 .about-student__photo {
   object-fit: cover;

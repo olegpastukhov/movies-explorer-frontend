@@ -1,3 +1,5 @@
+/* раздел входа на сайт */
+
 .login {
   height: 100%;
   margin: 0 auto;
@@ -10,17 +12,23 @@
   justify-content: space-between;
 }
 
+/* логотип на странице входа */
+
 .login__logo {
   margin-bottom: 35px;
   width: 38px;
   height: 38px;
 }
 
+/* шапка страницы входа */
+
 .login__header {
   margin: 0;
   margin-bottom: 40px;
   width: 100%;
 }
+
+/* заголовок страницы входа */
 
 .login__heading {
   margin: 0;
@@ -31,11 +39,15 @@
   color: #000000;
 }
 
+/* форма входа */
+
 .login__form {
   width: 100%;
   display: flex;
   flex-direction: column;
 }
+
+/* поле ввода */
 
 .login__input {
   background-color: #FAFAFA;
@@ -53,12 +65,16 @@
   border-bottom: 1px solid #3456F3;
 }
 
+/* подпись к полю ввода */
+
 .login__label {
   font-weight: 400;
   font-size: 10px;
   line-height: 12px;
   color: #A0A0A0;
 }
+
+/* кнопка входа */
 
 .login__button {
   width: 100%;
@@ -83,6 +99,13 @@
   cursor: pointer;
 }
 
+.login__button:disabled {
+  opacity: 0.2;
+  cursor: auto;
+}
+
+/* ошибка ввода данных */
+
 .login__error {
   margin-bottom: 6px;
   height: 12px;
@@ -92,6 +115,8 @@
   color: #EE3465;
 }
 
+/* нижняя часть страницы входа */
+
 .login__bottom-field {
   font-weight: 400;
   font-size: 14px;
@@ -99,6 +124,8 @@
   text-align: center;
   color: #A0A0A0;
 }
+
+/* ссылка на странице входа */
 
 .login__link {
   margin-left: 6px;

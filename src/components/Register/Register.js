@@ -1,7 +1,7 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import "./Register.css";
-import logo from "../../images/logo.svg";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import './Register.css';
+import logo from '../../images/logo.svg';
 
 // импортируем хук useForm
 
@@ -10,23 +10,6 @@ import useForm from '../../hooks/useForm';
 // компонет принимает пропс onRegister из App
 
 function Register({ onRegister }) {
-
-  // const [name, setName] = React.useState('');
-  // const [email, setEmail] = React.useState('');
-  // const [password, setPassword] = React.useState('');
-
-
-  // function handleNameChange(e) {
-  //   setName(e.target.value);
-  // }
-
-  // function handleEmailChange(e) {
-  //   setEmail(e.target.value);
-  // }
-
-  // function handlePasswordChange(e) {
-  //   setPassword(e.target.value);
-  // }
 
   // берём необходимое из useForm
 
@@ -47,13 +30,13 @@ function Register({ onRegister }) {
       </div>
       <form className="register__form form" onSubmit={handleFormSubmit}>
         <label className="register__label" htmlFor="name">Имя</label>
-        <input className="register__input" type="text" name="name" minLength={2} value={values.name || ''} onChange={handleValueChange} required />
+        <input className="register__input" type="text" name="name" minLength={2} value={values.name || ""} onChange={handleValueChange} required />
         <span className="register__error">{errors.name}</span>
         <label className="register__label" htmlFor="email">E-mail</label>
-        <input className="register__input" type="email" name="email" value={values.email || ''} onChange={handleValueChange} required />
+        <input className="register__input" type="email" name="email" value={values.email || ""} onChange={handleValueChange} required />
         <span className="register__error">{errors.email}</span>
         <label className="register__label" htmlFor="password">Пароль</label>
-        <input className="register__input" type="password" name="password" minLength="8" value={values.password || ''} onChange={handleValueChange} required />
+        <input className="register__input" type="password" name="password" minLength="8" value={values.password || ""} onChange={handleValueChange} required />
         <span className="register__error">{errors.password}</span>
         <button className="register__button" type="submit" disabled={!isValid}>Зарегистрироваться</button>
       </form>
