@@ -44,7 +44,7 @@ function Login({ onLogin }) {
                     value={values.email || ""}
                     onChange={handleValueChange}
                     required
-                    pattern={EMAIL_REGEXP}
+                    pattern={EMAIL_REGEXP} // проверка валидности email
                 />
                 <span className="login__error">{errors.email}</span>
                 <label className="login__label" htmlFor="password">Пароль</label>

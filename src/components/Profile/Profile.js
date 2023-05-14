@@ -10,6 +10,10 @@ import useForm from '../../hooks/useForm';
 
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 
+// импортируем константу EMAIL_REGEXP для проверки валидности email
+
+import { EMAIL_REGEXP } from '../../utils/constants.js';
+
 // компонент принимает пропсы из App
 
 function Profile({ loggedIn, onUpdateUserInfo, onSignOut }) {
@@ -58,7 +62,8 @@ function Profile({ loggedIn, onUpdateUserInfo, onSignOut }) {
           <div className="profile__line"></div>
           <div className="profile__field">
             <label className="profile__label">E-mail</label>
-            <input type="email" name="email" value={values.email || ""} className="profile__input" required onChange={handleValueChange} />
+            <input type="email" name="email" value={values.email || ""} className="profile__input" required onChange={handleValueChange}
+              pattern={EMAIL_REGEXP} />
           </div>
           <div className="profile__bottom-field">
             <button className="profile__edit-button" type="submit" disabled={isNewValues}>Редактировать</button>
