@@ -18,7 +18,7 @@ function MoviesCardList({ onSave, onDelete, movies, isSavedMoviesPage, savedMovi
 
   // функция установки ширины экрана
 
-  const setWidth = () => {
+  const setScreenWidth = () => {
     const getWidth = useCallback(() => window.innerWidth, []); // получаем ширину экрана
     const [width, setWidth] = useState(getWidth()); // устанавливаем стейт width
     useEffect(() => {
@@ -39,7 +39,7 @@ function MoviesCardList({ onSave, onDelete, movies, isSavedMoviesPage, savedMovi
 
   // получаем значение ширины экрана
 
-  const screenWidth = setWidth();
+  const screenWidth = setScreenWidth();
 
   // получаем количество фильмов, если массив не пустой
 

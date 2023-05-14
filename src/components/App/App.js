@@ -127,11 +127,30 @@ function App() {
   const handleUserSignOut = () => {
     logout()
       .then(() => {
+        // сбрасываем все стейты при разлогинивании
+
         setIsLoggedIn(false)
-        localStorage.clear(); // удаление данных из localstorage
+        setIsLoading(false);
+        setSavedMovies([]);
+        setInitMoviesList([]);
+        setFilteredMoviesList([]);
+        setShortMoviesFilter(false);
+        setMoviesFromServer([]);
+        setShortSavedMoviesFilter(false);
+        setShowedSavedMoviesList([]);
+        setFilteredSavedMoviesList([]);
+        setQuerySavedMovie('')
         setCurrentUser({});
         setPopupMessage('');
-        navigate('/'); // переадресация на главную страницу
+        setIsPopupOpen(false);
+
+        // удаление данных из localstorage
+
+        localStorage.clear();
+
+        // переадресация на главную страницу
+        
+        navigate('/'); 
       })
       .catch((err) => {
         console.log(err.message)
