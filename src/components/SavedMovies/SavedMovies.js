@@ -21,12 +21,12 @@ function SavedMovies({
   onDelete,
   savedMovies,
   isLoading,
-  onShortSavedMoviesFilter,
   onShowedSavedMoviesList,
   filterMovies,
   query,
   onSearchMovies,
   onFilter,
+  onShortSavedMoviesFilter,
   shortSavedMoviesFilter,
   showedSavedMoviesList
 }) {
@@ -35,14 +35,16 @@ function SavedMovies({
 
   const location = useLocation();
 
-  // получаем из хранилища состояние фильтра короткометражек, получаем массив показываемых фильмов
+  useEffect(() => {
+    onShortSavedMoviesFilter(false);
+  }, [location]);
+
+  //получаем массив показываемых фильмов
 
   useEffect(() => {
-    if (localStorage.getItem('shortSavedMoviesFilter') === 'true') {
-      onShortSavedMoviesFilter(true);
+    if (shortSavedMoviesFilter === 'true') {
       onShowedSavedMoviesList(savedMovies.filter(movie => movie.duration < SHORT_MOVIE_DURATION));
     } else {
-      onShortSavedMoviesFilter(false);
       const movies = filterMovies(savedMovies, query, shortSavedMoviesFilter);
       onShowedSavedMoviesList(movies);
     }

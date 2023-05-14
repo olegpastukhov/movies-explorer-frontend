@@ -340,11 +340,9 @@ function App() {
   const handleSavedShortMoviesList = () => {
     if (!shortSavedMoviesFilter) {
       setShortSavedMoviesFilter(true);
-      // localStorage.setItem('shortSavedMoviesFilter', true); // сохраняем состояние чекбокса в хранилище
       setShowedSavedMoviesList(filteredSavedMoviesList.filter(movie => movie.duration < SHORT_MOVIE_DURATION));
     } else {
       setShortSavedMoviesFilter(false);
-      // localStorage.setItem('shortSavedMoviesFilter', false); // и здесь тоже, но false
       setShowedSavedMoviesList(filteredSavedMoviesList);
     }
   }
@@ -448,12 +446,12 @@ function App() {
               savedMovies={savedMovies}
               loggedIn={isLoggedIn}
               isLoading={isLoading}
-              onShortSavedMoviesFilter={setShortSavedMoviesFilter}
               onShowedSavedMoviesList={setShowedSavedMoviesList}
               filterMovies={filterMovies}
               query={querySavedMovie}
               onSearchMovies={handleSavedMovieSearchSubmit}
               onFilter={handleSavedShortMoviesList}
+              onShortSavedMoviesFilter={setShortSavedMoviesFilter}
               shortSavedMoviesFilter={shortSavedMoviesFilter}
               showedSavedMoviesList={showedSavedMoviesList}
             />) : (
