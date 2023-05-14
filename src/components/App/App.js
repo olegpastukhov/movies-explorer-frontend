@@ -449,6 +449,7 @@ function App() {
               onShowedSavedMoviesList={setShowedSavedMoviesList}
               filterMovies={filterMovies}
               query={querySavedMovie}
+              onQuery={setQuerySavedMovie}
               onSearchMovies={handleSavedMovieSearchSubmit}
               onFilter={handleSavedShortMoviesList}
               onShortSavedMoviesFilter={setShortSavedMoviesFilter}

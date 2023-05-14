@@ -24,6 +24,7 @@ function SavedMovies({
   onShowedSavedMoviesList,
   filterMovies,
   query,
+  onQuery,
   onSearchMovies,
   onFilter,
   onShortSavedMoviesFilter,
@@ -37,6 +38,8 @@ function SavedMovies({
 
   useEffect(() => {
     onShortSavedMoviesFilter(false);
+    onQuery('');
+    onShowedSavedMoviesList(savedMovies);
   }, [location]);
 
   //получаем массив показываемых фильмов
@@ -48,7 +51,7 @@ function SavedMovies({
       const movies = filterMovies(savedMovies, query, shortSavedMoviesFilter);
       onShowedSavedMoviesList(movies);
     }
-  }, [savedMovies, location, shortSavedMoviesFilter]);
+  }, [savedMovies, query, shortSavedMoviesFilter]);
 
   return (
     <section className="saved-movies">
