@@ -7,6 +7,10 @@ import './Login.css';
 
 import useForm from '../../hooks/useForm';
 
+// импортируем константу EMAIL_REGEXP для проверки валидности email
+
+import { EMAIL_REGEXP } from '../../utils/constants.js';
+
 // компонент принимает пропс onLogin из App
 
 function Login({ onLogin }) {
@@ -40,6 +44,7 @@ function Login({ onLogin }) {
                     value={values.email || ""}
                     onChange={handleValueChange}
                     required
+                    pattern={EMAIL_REGEXP}
                 />
                 <span className="login__error">{errors.email}</span>
                 <label className="login__label" htmlFor="password">Пароль</label>

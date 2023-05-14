@@ -26,5 +26,9 @@ export const BIG_SCREEN_CARDS_COUNT = 12;
 export const MORE_CARDS_SMALL_SCREEN_COUNT = 2;
 export const MORE_CARDS_BIG_SCREEN_COUNT = 3;
 
+// регулярное выражение для валидации email
+
+export const EMAIL_REGEXP = '^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$';
+
 
 

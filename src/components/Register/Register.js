@@ -7,6 +7,10 @@ import logo from '../../images/logo.svg';
 
 import useForm from '../../hooks/useForm';
 
+// импортируем константу EMAIL_REGEXP для проверки валидности email
+
+import { EMAIL_REGEXP } from '../../utils/constants.js';
+
 // компонет принимает пропс onRegister из App
 
 function Register({ onRegister }) {
@@ -33,7 +37,7 @@ function Register({ onRegister }) {
         <input className="register__input" type="text" name="name" minLength={2} value={values.name || ""} onChange={handleValueChange} required />
         <span className="register__error">{errors.name}</span>
         <label className="register__label" htmlFor="email">E-mail</label>
-        <input className="register__input" type="email" name="email" value={values.email || ""} onChange={handleValueChange} required />
+        <input className="register__input" type="email" name="email" value={values.email || ""} onChange={handleValueChange} pattern={EMAIL_REGEXP} required />
         <span className="register__error">{errors.email}</span>
         <label className="register__label" htmlFor="password">Пароль</label>
         <input className="register__input" type="password" name="password" minLength="8" value={values.password || ""} onChange={handleValueChange} required />
