@@ -366,7 +366,7 @@ function App() {
       .then((data) => {
         setIsLoggedIn(true);
         setCurrentUser(data) // получаем данные пользователя
-        navigate(path); 
+        navigate(path);
       })
       .catch((err) => console.log(err));
     getSavedMovies(jwt)
@@ -401,8 +401,10 @@ function App() {
       <div className="App">
         <Routes>
           <Route exact path="/" element={<Main loggedIn={isLoggedIn} />} />
-          <Route exact path="/signup" element={<Register onRegister={handleUserRegistration} />} />
-          <Route path="/signin" element={<Login onLogin={handleUserAuthorization} />} />
+          <Route exact path="/signup" element={!isLoggedIn ? (
+            <Register onRegister={handleUserRegistration} />) : (<Navigate to="/" />)} />
+          <Route path="/signin" element={!isLoggedIn ? (
+            <Login onLogin={handleUserAuthorization} />) : (<Navigate to="/" />)} />
           <Route path="/movies" element={isLoggedIn ? (
             <Movies
               loggedIn={isLoggedIn}
