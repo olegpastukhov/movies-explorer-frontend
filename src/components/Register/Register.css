@@ -1,3 +1,5 @@
+/* секция регистрации */
+
 .register {
   margin: 0 auto;
   display: flex;
@@ -9,11 +11,15 @@
   height: 100%;
 }
 
+/* логотип секции */
+
 .register__logo {
   margin-bottom: 35px;
   width: 38px;
   height: 38px;
 }
+
+/* заголовок секции */
 
 .register__heading {
   margin: 0;
@@ -24,10 +30,14 @@
   color: #000000;
 }
 
+/* "шапка" секции */
+
 .register__header {
   margin-bottom: 40px;
   width: 100%;
 }
+
+/* форма регистрации */
 
 .register__form {
   width: 100%;
@@ -35,12 +45,16 @@
   flex-direction: column;
 }
 
+/* подпись к полю ввода */
+
 .register__label {
   font-weight: 400;
   font-size: 10px;
   line-height: 12px;
   color: #A0A0A0;
 }
+
+/* поле ввода формы */
 
 .register__input {
   padding-top: 5px;
@@ -52,6 +66,8 @@
   border-bottom: 1px solid #E8E8E8;
 }
 
+/* сообщение об ошибке */
+
 .register__error {
   font-weight: 400;
   font-size: 10px;
@@ -61,11 +77,15 @@
   height: 12px;
 }
 
+/* состояние фокуса поля ввода */
+
 .register__input:focus {
   border: none;
   outline: none;
-  border-bottom: 1px solid #2BE080;
+  border-bottom: 1px solid #3456F3;
 }
+
+/* кнопка регистрации */
 
 .register__button {
   padding: 13px 0 15px;
@@ -88,6 +108,13 @@
   cursor: pointer;
 }
 
+.register__button:disabled {
+  opacity: 0.2;
+  cursor: auto;
+}
+
+/* ссылка на страницу входа */
+
 .register__link {
   margin-left: 6px;
   color: #3456F3;
@@ -98,6 +125,8 @@
   opacity: 0.6;
   cursor: pointer;
 }
+
+/* нижнее поле секции */
 
 .register__bottom-field {
   font-weight: 400;

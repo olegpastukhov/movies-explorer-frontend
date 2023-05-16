@@ -1,6 +1,8 @@
 import React from 'react';
 import "./Footer.css";
 
+// компонент не принимает пропсы, не содержит логики (кроме вычисления года), только возвращает разметку
+
 function Footer() {
   return (
     <footer className="footer">

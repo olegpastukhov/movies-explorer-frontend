@@ -1,9 +1,13 @@
+/* секция "Портфолио" */
+
 .portfolio {
     padding-top: 0;
     padding-left: 70px;
     padding-right: 70px;
     padding-bottom: 110px;
 }
+
+/* заголовок секции */
 
 .portfolio__title {
     margin: 0;
@@ -16,6 +20,8 @@
     mix-blend-mode: normal;
 }
 
+/* список ссылок на репозитории */
+
 .portfolio__list {
     margin: 0;
     padding: 0;
@@ -24,6 +30,8 @@
     row-gap: 20px;
     list-style: none;
 }
+
+/* пункт списка */
 
 .portfolio__list-item {
     margin: 0;
@@ -40,6 +48,8 @@
 .portfolio__list-item:last-of-type {
     border-bottom: none;
 }
+
+/* ссылка секции */
 
 .portfolio__link {
     color: #000000;

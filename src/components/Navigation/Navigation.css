@@ -1,3 +1,5 @@
+/* раздел навигации */
+
 .navigation {
     padding: 0;
     margin: 0;
@@ -5,11 +7,15 @@
     justify-content: space-between;
 }
 
+/* блок авторизации и регистрации */
+
 .navigation__user-auth {
     display: flex;
     align-items: center;
     justify-content: flex-end;
 }
+
+/* ссылка на регистрацию */
 
 .navigation__register-link {
     color: #000000;
@@ -25,6 +31,8 @@
     opacity: 0.6;
     cursor: pointer;
 }
+
+/* кнопка входа */
 
 .navigation__login-button {
     padding-left: 20px;
@@ -45,6 +53,8 @@
     opacity: 0.6;
     cursor: pointer;
 }
+
+/* кнопка "Аккаунт" */
 
 .navigation__account-button {
     display: flex;
@@ -71,6 +81,8 @@
     cursor: pointer;
 }
 
+/* иконка на кнопке "Аккаунт" */
+
 .navigation__account-icon {
     width: 26px;
     height: 26px;
@@ -80,6 +92,8 @@
     background-position: center;
     background-repeat: no-repeat;
 }
+
+/* отменяем подчёркивание у ссылок */
 
 .navigation a {
     text-decoration: none;

@@ -1,3 +1,5 @@
+// главная страница сайта
+
 import React from 'react';
 import Header from "./Header/Header";
 import Promo from './Promo/Promo';
@@ -8,10 +10,12 @@ import AboutMe from './AboutMe/AboutMe';
 import Portfolio from './Portfolio/Portfolio';
 import Footer from './Footer/Footer';
 
-function Main() {
+// компонет принимает пропс loggedIn из App, передаёт его в header
+
+function Main({ loggedIn }) {
   return (
     <>
-      <Header />
+      <Header loggedIn={loggedIn}/>
       <main>
         <Promo />
         <NavTab />

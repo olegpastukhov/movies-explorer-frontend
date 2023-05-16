@@ -1,3 +1,5 @@
+/* секция "Технологии" */
+
 .technologies {
   padding-top: 85px;
   padding-bottom: 85px;
@@ -5,6 +7,8 @@
   padding-right: 70px;
   background-color: #F5F5F5;
 }
+
+/* заголовок секции */
 
 .technologies__section-title {
   display: block;
@@ -17,6 +21,8 @@
   letter-spacing: -0.04em;
   color: #000000;
 }
+
+/* текстовое поле */
 
 .technologies__text {
   margin: 0 auto;
@@ -32,6 +38,8 @@
   color: #000000;
 }
 
+/* крупный заголовок */
+
 .technologies__heading {
   margin: 0;
   padding: 0;
@@ -45,6 +53,8 @@
   color: #000000;
 }
 
+/* список изученных технологий */
+
 .technologies__list {
   margin: 0 auto;
   padding: 0;
@@ -54,6 +64,8 @@
   column-gap: 10px;
   justify-content: center;
 }
+
+/* пункт списка технологий */
 
 .technologies__list-item {
   display: block;

@@ -1,3 +1,5 @@
+/* секция "Страница не найдена" */
+
 .notfound {
     height: 100vh;
     padding: 0;
@@ -7,12 +9,16 @@
     align-items: center;
 }
 
+/* контейнер */
+
 .notfound__container {
     margin: 246px auto 185px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+
+/* заголовок секции */
 
 .notfound__heading {
     padding: 0;
@@ -26,6 +32,8 @@
     color: #000000;
 }
 
+/* сообщение на странице */
+
 .notfound__message {
     padding: 0;
     margin: 0;
@@ -34,6 +42,8 @@
     text-align: center;
     color: #000000;
 }
+
+/* ссылка "Назад" */
 
 .notfound__link {
     margin-bottom: 60px;

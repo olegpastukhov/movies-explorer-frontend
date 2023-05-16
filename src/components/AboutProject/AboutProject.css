@@ -1,3 +1,5 @@
+/* секция "О проекте" */
+
 .about-project {
   padding-top: 110px;
   padding-left: 70px;
@@ -5,7 +7,9 @@
   padding-bottom: 107px;
 }
 
-.about-project__title {
+/* заголовок секции */
+
+.about-project__header {
   margin: 0;
   padding: 0;
   padding-bottom: 24px;
@@ -18,6 +22,8 @@
   color: #000000;
 }
 
+/* контент секции - таблица */
+
 .about-project__table {
   display: flex;
   flex-direction: row;
@@ -25,6 +31,8 @@
   column-gap: 40px;
   margin-bottom: 110px;
 }
+
+/* "шапка" таблицы */
 
 .about-project__heading {
   margin: 0;
@@ -37,9 +45,13 @@
   color: #000000;
 }
 
+/* ячейка таблицы */
+
 .about-project__cell {
   max-width: 550px;
 }
+
+/* строка с неделями */
 
 .about-project__progress-bar {
   height: 36px;
@@ -50,6 +62,8 @@
   line-height: 17px;
 }
 
+/* текст в ячейке таблицы */
+
 .about-project__text {
   margin: 0;
   padding: 0;
@@ -59,6 +73,8 @@
   color: #000000;
 }
 
+/* подписи к строке с неделями */
+
 .about-project__progress-bar-labels {
   display: flex;
   font-weight: 500;
@@ -66,6 +82,8 @@
   line-height: 17px;
   color: #A0A0A0;
 }
+
+/* "ячейка" бэкенд */
 
 .about-project__backend {
   background-color: #3456F3;
@@ -75,6 +93,8 @@
   color: #FFFFFF;
 }
 
+/* подпись к "ячейке" бэкенд */
+
 .about-project__backend-label {
   width: 20%;
   color: #A0A0A0;
@@ -83,6 +103,8 @@
   justify-content: center;
 }
 
+/* "ячейка" фронтенд */
+
 .about-project__frontend {
   padding: 9px 0;
   text-align: center;
@@ -90,6 +112,8 @@
   width: 80%;
   color: #000000;
 }
+
+/* подпись к "ячейке" фронтенд */
 
 .about-project__frontend-label {
   width: 80%;

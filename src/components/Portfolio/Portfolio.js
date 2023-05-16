@@ -1,5 +1,7 @@
 import React from 'react';
-import "./Portfolio.css";
+import './Portfolio.css';
+
+// компонент не принимает пропсы, не содержит логики
 
 function Portfolio() {
   return (

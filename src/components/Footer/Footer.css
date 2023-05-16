@@ -1,3 +1,5 @@
+/* секция футер ("подвал сайта") */
+
 .footer {
     padding-top: 60px;
     padding-left: 70px;
@@ -7,6 +9,8 @@
     flex-direction: column;
     background-color: #F8F8F8;
 }
+
+/* заголовок футера */
 
 .footer__title {
     padding: 0 0 20px;
@@ -20,11 +24,15 @@
     color: #A0A0A0;
 }
 
+/* контент футера */
+
 .footer__content {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
+
+/* блок копирайт */
 
 .footer__copyright {
     padding: 0;
@@ -34,6 +42,8 @@
     line-height: 16px;
     color: #000000;
 }
+
+/* блок со ссылками */
 
 .footer__links {
     margin: 0;
@@ -45,6 +55,8 @@
     gap: 20px;
     list-style: none;
 }
+
+/* ссылка футера */
 
 .footer__link {
     color: #000000;

@@ -1,10 +1,12 @@
 import React from 'react';
 import "./AboutProject.css";
 
+// компонент не принимает пропсы, не содержит логики
+
 function AboutProject() {
     return (
         <section className="about-project" id="about-project">
-            <h2 className="about-project__title">О проекте</h2>
+            <h2 className="about-project__header">О проекте</h2>
             <div className="about-project__table">
                 <div className="about-project__cell">
                     <h3 className="about-project__heading">Дипломный проект включал 5 этапов</h3>

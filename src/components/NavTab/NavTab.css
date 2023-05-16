@@ -1,3 +1,5 @@
+/* навигация на главной странице (список) */
+
 .navtab {
     margin: 0 auto;
     padding: 0;
@@ -10,6 +12,8 @@
     min-height: 66px;
 }
 
+/* пункт списка */
+
 .navtab__item {
     display: block;
     margin: 0;
@@ -21,6 +25,8 @@
     text-decoration: underline;
     text-underline-offset: 3px;
 }
+
+/* ссылка */
 
 .navtab__link {
     color: #000000;
